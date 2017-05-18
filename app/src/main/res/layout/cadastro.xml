@@ -10,9 +10,9 @@
         android:layout_height="48dp"
         android:text="Finalizar Cadastro"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/endereco"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/endereco" />
 
     <EditText
         android:id="@+id/nomeUsuario"
@@ -23,10 +23,10 @@
         android:inputType="textPersonName"
         android:selectAllOnFocus="false"
         android:singleLine="false"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/email" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/email"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/dataDeNascimento"
@@ -35,10 +35,10 @@
         android:ems="10"
         android:hint="DD/MM/AAAA"
         android:inputType="date"
-        app:layout_constraintBottom_toTopOf="@+id/telefone"
-        app:layout_constraintTop_toBottomOf="@+id/cpf"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/telefone"
+        app:layout_constraintTop_toBottomOf="@+id/cpf" />
 
     <EditText
         android:id="@+id/telefone"
@@ -47,22 +47,22 @@
         android:ems="10"
         android:hint="(12) 91234-5678"
         android:inputType="phone"
-        app:layout_constraintBottom_toTopOf="@+id/cep"
-        app:layout_constraintTop_toBottomOf="@+id/dataDeNascimento"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/cep"
+        app:layout_constraintTop_toBottomOf="@+id/dataDeNascimento" />
 
     <EditText
         android:id="@+id/endereco"
-        android:layout_width="340dp"
-        android:layout_height="42dp"
+        android:layout_width="338dp"
+        android:layout_height="40dp"
         android:ems="10"
         android:hint="Rua Exemplo, 123"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/addFirebase"
-        app:layout_constraintTop_toBottomOf="@+id/cep"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cep"
+        app:layout_constraintBottom_toTopOf="@+id/addFirebase" />
 
     <EditText
         android:id="@+id/cep"
@@ -71,10 +71,10 @@
         android:ems="10"
         android:hint="01234-567"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/endereco"
-        app:layout_constraintTop_toBottomOf="@+id/telefone"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/endereco"
+        app:layout_constraintTop_toBottomOf="@+id/telefone" />
 
     <EditText
         android:id="@+id/cpf"
@@ -83,10 +83,10 @@
         android:ems="10"
         android:hint="123.456.789-01"
         android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/dataDeNascimento"
-        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/dataDeNascimento"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <EditText
         android:id="@+id/email"
@@ -95,9 +95,21 @@
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/cpf"
-        app:layout_constraintTop_toBottomOf="@+id/nomeUsuario"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/password"
+        app:layout_constraintTop_toBottomOf="@+id/nomeUsuario" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="338dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:hint="Senha"
+        android:inputType="textPassword"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/cpf"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
 </android.support.constraint.ConstraintLayout>

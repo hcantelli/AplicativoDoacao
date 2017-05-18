@@ -25,6 +25,14 @@
             <category android:name="android.intent.category.DEFAULT" />
         </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.hcantelli.appdoacao.LogIn"
+            android:label="LogIn">
+            <intent-filter>
+                <action android:name="com.example.hcantelli.appdoacao.LogIn" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
     </application>
 

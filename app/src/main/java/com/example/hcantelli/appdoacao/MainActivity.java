@@ -24,10 +24,19 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent("com.example.hcantelli.appdoacao.Cadastro");
-                intent.putExtra("Usuario",2);
+                intent.putExtra("Usuario",4);
                 startActivity(intent);
             }
 
+        });
+
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent_login = new Intent("com.example.hcantelli.appdoacao.LogIn");
+                startActivity(intent_login);
+            }
         });
 
 
