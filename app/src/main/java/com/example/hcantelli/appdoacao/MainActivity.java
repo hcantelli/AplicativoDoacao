@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent("com.example.hcantelli.appdoacao.Cadastro");
-                intent.putExtra("Usuario",3);
+                intent.putExtra("Usuario",2);
                 startActivity(intent);
             }
 
