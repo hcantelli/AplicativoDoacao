@@ -4,112 +4,190 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout12"
+        android:layout_width="338dp"
+        android:layout_height="wrap_content"
+        android:elevation="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout15"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout14">
+
+        <EditText
+            android:id="@+id/cep"
+            android:layout_width="338dp"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:hint="01234-567"
+            android:inputType="textPersonName"
+            android:textColorLink="@android:color/holo_green_light"
+            tools:layout_editor_absoluteX="11dp"
+            tools:layout_editor_absoluteY="342dp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout10"
+        android:layout_width="338dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout13"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout16">
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="338dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Senha"
+            android:inputType="textPassword"
+            android:textColorLink="@android:color/holo_green_light"
+            tools:layout_editor_absoluteX="11dp"
+            tools:layout_editor_absoluteY="130dp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout16"
+        android:layout_width="338dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout10"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout17">
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="338dp"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textColorLink="@android:color/holo_green_light"
+            tools:layout_editor_absoluteX="11dp"
+            tools:layout_editor_absoluteY="77dp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout13"
+        android:layout_width="338dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout11"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout10">
+
+        <EditText
+            android:id="@+id/cpf"
+            android:layout_width="338dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="123.456.789-01"
+            android:inputType="number"
+            android:textColorLink="@android:color/holo_green_light"
+            tools:layout_editor_absoluteX="11dp"
+            tools:layout_editor_absoluteY="178dp" />
+    </android.support.design.widget.TextInputLayout>
+
+
     <Button
         android:id="@+id/addFirebase"
         android:layout_width="338dp"
         android:layout_height="48dp"
         android:text="Finalizar Cadastro"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout15"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/endereco" />
+        app:layout_constraintLeft_toLeftOf="parent" />
 
-    <EditText
-        android:id="@+id/nomeUsuario"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout17"
         android:layout_width="338dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:hint="Nome Completo"
-        android:inputType="textPersonName"
-        android:selectAllOnFocus="false"
-        android:singleLine="false"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout16"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/email"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/dataDeNascimento"
-        android:layout_width="338dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:hint="DD/MM/AAAA"
-        android:inputType="date"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/telefone"
-        app:layout_constraintTop_toBottomOf="@+id/cpf" />
+        <EditText
+            android:id="@+id/nomeUsuario"
+            android:layout_width="338dp"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:hint="Nome Completo"
+            android:inputType="textPersonName"
+            android:selectAllOnFocus="false"
+            android:textColorLink="@android:color/holo_green_light"
+            tools:layout_editor_absoluteX="11dp"
+            tools:layout_editor_absoluteY="26dp" />
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:id="@+id/telefone"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout11"
         android:layout_width="338dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:hint="(12) 91234-5678"
-        android:inputType="phone"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout14"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/cep"
-        app:layout_constraintTop_toBottomOf="@+id/dataDeNascimento" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout13">
 
-    <EditText
-        android:id="@+id/endereco"
-        android:layout_width="338dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:hint="Rua Exemplo, 123"
-        android:inputType="textPersonName"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cep"
-        app:layout_constraintBottom_toTopOf="@+id/addFirebase" />
+        <EditText
+            android:id="@+id/telefone"
+            android:layout_width="338dp"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:hint="(12) 91234-5678"
+            android:inputType="phone"
+            android:textColorLink="@android:color/holo_green_light"
+            tools:layout_editor_absoluteX="11dp"
+            tools:layout_editor_absoluteY="284dp" />
 
-    <EditText
-        android:id="@+id/cep"
-        android:layout_width="338dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:hint="01234-567"
-        android:inputType="textPersonName"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/endereco"
-        app:layout_constraintTop_toBottomOf="@+id/telefone" />
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:id="@+id/cpf"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout14"
         android:layout_width="338dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:hint="123.456.789-01"
-        android:inputType="number"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout12"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/dataDeNascimento"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout11">
 
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="338dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/password"
-        app:layout_constraintTop_toBottomOf="@+id/nomeUsuario" />
+        <EditText
+            android:id="@+id/dataDeNascimento"
+            android:layout_width="338dp"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:hint="DD/MM/AAAA"
+            android:inputType="date"
+            android:textColorLink="@android:color/holo_green_light"
+            tools:layout_editor_absoluteX="11dp"
+            tools:layout_editor_absoluteY="235dp" />
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:id="@+id/password"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout15"
         android:layout_width="338dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:hint="Senha"
-        android:inputType="textPassword"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/addFirebase"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/cpf"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout12">
+
+        <EditText
+            android:id="@+id/endereco"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:hint="Rua Exemplo, 123"
+            android:inputType="textPersonName"
+            android:textColorLink="@android:color/holo_green_light"
+            tools:layout_editor_absoluteX="11dp"
+            tools:layout_editor_absoluteY="396dp" />
+    </android.support.design.widget.TextInputLayout>
+
 
 </android.support.constraint.ConstraintLayout>

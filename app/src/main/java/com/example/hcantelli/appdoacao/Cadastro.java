@@ -1,6 +1,7 @@
 package com.example.hcantelli.appdoacao;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -28,6 +30,8 @@ public class Cadastro extends AppCompatActivity{
     private EditText view_nomeUsuario, view_email, view_dataDeNascimento, view_telefone, view_endereco, view_cep, view_cpf, view_password;
     private FirebaseAuth firebaseAuth;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +45,10 @@ public class Cadastro extends AppCompatActivity{
 
         mFirebaseButton = (Button) findViewById(R.id.addFirebase);
         view_nomeUsuario = (EditText) findViewById(R.id.nomeUsuario);
+        view_nomeUsuario.requestFocus();
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(view_nomeUsuario, InputMethodManager.SHOW_IMPLICIT);
+
         view_email = (EditText) findViewById(R.id.email);
         view_dataDeNascimento = (EditText) findViewById(R.id.dataDeNascimento);
         view_telefone = (EditText) findViewById(R.id.telefone);
