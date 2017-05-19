@@ -49,67 +49,65 @@ public class Cadastro extends AppCompatActivity{
         view_cpf = (EditText) findViewById(R.id.cpf);
         view_password = (EditText) findViewById(R.id.password);
 
-        if(getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        String nomeUsuario = view_nomeUsuario.getText().toString().trim();
-        final String email = view_email.getText().toString().trim();
-        String dataDeNascimento = view_dataDeNascimento.getText().toString().trim();
-        final String telefone = view_telefone.getText().toString().trim();
-        String endereco = view_endereco.getText().toString().trim();
-        String cep = view_cep.getText().toString().trim();
-        String cpf = view_cpf.getText().toString().trim();
-        final String senha = view_password.getText().toString().trim();
-
-        final HashMap<String, String> usuarioMap = new HashMap<String, String>();
-//Erro aqui
-        usuarioMap.put("nomeUsuario", nomeUsuario);
-        usuarioMap.put("email", email);
-        usuarioMap.put("dataDeNascimento", dataDeNascimento);
-        usuarioMap.put("telefone", telefone);
-        usuarioMap.put("endereco", endereco);
-        usuarioMap.put("CEP", cep);
-        usuarioMap.put("CPF", cpf);
-
-
         mFirebaseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//Erro aqui
-                final ProgressDialog progressDialog = ProgressDialog.show(Cadastro.this, "Por favor, aguarde...","Processando...", true);
+                String nomeUsuario = view_nomeUsuario.getText().toString().trim();
+                final String email = view_email.getText().toString().trim();
+                String dataDeNascimento = view_dataDeNascimento.getText().toString().trim();
+                String telefone = view_telefone.getText().toString().trim();
+                String endereco = view_endereco.getText().toString().trim();
+                String cep = view_cep.getText().toString().trim();
+                String cpf = view_cpf.getText().toString().trim();
+                final String senha = view_password.getText().toString().trim();
+
+                final HashMap<String, String> usuarioMap = new HashMap<String, String>();
+
+                usuarioMap.put("nomeUsuario", nomeUsuario);
+                usuarioMap.put("email", email);
+                usuarioMap.put("dataDeNascimento", dataDeNascimento);
+                usuarioMap.put("telefone", telefone);
+                usuarioMap.put("endereco", endereco);
+                usuarioMap.put("CEP", cep);
+                usuarioMap.put("CPF", cpf);
+
+                final ProgressDialog progressDialog = ProgressDialog.show(Cadastro.this, "Por favor, aguarde...", "Processando...", true);
+
                 mDatabase.child("Usuarios").child("Usuario" + usuario).setValue(usuarioMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-//Erro aqui
-                        if(task.isSuccessful()){
-                            Toast.makeText(Cadastro.this, "Cadastro feito com Sucesso!",Toast.LENGTH_LONG).show();
-                            Intent intent1 = new Intent(Cadastro.this,MainActivity.class);
+                        if (task.isSuccessful()) {
+
+                            (firebaseAuth.createUserWithEmailAndPassword(email, senha)).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    progressDialog.dismiss();
+
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(Cadastro.this, "Cadastro feito com Sucesso!", Toast.LENGTH_LONG).show();
+                                    } else {
+                                        Log.e("ERROR", task.getException().toString());
+                                        Toast.makeText(Cadastro.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            });
+                            Intent intent1 = new Intent(Cadastro.this, MainActivity.class);
                             startActivity(intent1);
-                        } else{
-                            Toast.makeText(Cadastro.this, "Ops... Ocorreu algum erro no Cadastro. Tente novamente.",Toast.LENGTH_LONG).show();
-                        }
-
-                    }
-                });
-//Erro aqui
-                (firebaseAuth.createUserWithEmailAndPassword(email, senha)).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        progressDialog.dismiss();
-
-                        if(task.isSuccessful()){
-
                         } else {
-                            Log.e("ERROR", task.getException().toString());
-                            Toast.makeText(Cadastro.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(Cadastro.this, "Ops... Ocorreu algum erro no Cadastro. Tente novamente.", Toast.LENGTH_LONG).show();
                         }
+
                     }
                 });
-
             }
         });
+
+
     }
 
     public boolean onOptionsItemSelected (MenuItem item){
