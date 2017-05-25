@@ -5,14 +5,14 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout12"
+        android:id="@+id/inputLayoutCEP"
         android:layout_width="338dp"
         android:layout_height="wrap_content"
         android:elevation="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout15"
+        app:layout_constraintBottom_toTopOf="@+id/inputLayoutEndereco"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout14">
+        app:layout_constraintTop_toBottomOf="@+id/inputLayoutDataDeNascimento">
 
         <EditText
             android:id="@+id/cep"
@@ -27,13 +27,14 @@
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout10"
+        android:id="@+id/inputLayoutPassword"
         android:layout_width="338dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout13"
+        app:layout_constraintBottom_toTopOf="@+id/inputLayoutCPF"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout16">
+        app:layout_constraintTop_toBottomOf="@+id/inputLayoutEmail"
+        app:passwordToggleEnabled="true">
 
         <EditText
             android:id="@+id/password"
@@ -50,13 +51,13 @@
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout16"
+        android:id="@+id/inputLayoutEmail"
         android:layout_width="338dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout10"
+        app:layout_constraintBottom_toTopOf="@+id/inputLayoutPassword"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout17">
+        app:layout_constraintTop_toBottomOf="@+id/inputLayoutNomeUsuario">
 
         <EditText
             android:id="@+id/email"
@@ -71,13 +72,13 @@
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout13"
+        android:id="@+id/inputLayoutCPF"
         android:layout_width="338dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout11"
+        app:layout_constraintBottom_toTopOf="@+id/inputLayoutTelefone"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout10">
+        app:layout_constraintTop_toBottomOf="@+id/inputLayoutPassword">
 
         <EditText
             android:id="@+id/cpf"
@@ -99,15 +100,15 @@
         android:layout_height="48dp"
         android:text="Finalizar Cadastro"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout15"
+        app:layout_constraintTop_toBottomOf="@+id/inputLayoutEndereco"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout17"
+        android:id="@+id/inputLayoutNomeUsuario"
         android:layout_width="338dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout16"
+        app:layout_constraintBottom_toTopOf="@+id/inputLayoutEmail"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -126,13 +127,13 @@
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout11"
+        android:id="@+id/inputLayoutTelefone"
         android:layout_width="338dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout14"
+        app:layout_constraintBottom_toTopOf="@+id/inputLayoutDataDeNascimento"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout13">
+        app:layout_constraintTop_toBottomOf="@+id/inputLayoutCPF">
 
         <EditText
             android:id="@+id/telefone"
@@ -148,13 +149,13 @@
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout14"
+        android:id="@+id/inputLayoutDataDeNascimento"
         android:layout_width="338dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout12"
+        app:layout_constraintBottom_toTopOf="@+id/inputLayoutCEP"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout11">
+        app:layout_constraintTop_toBottomOf="@+id/inputLayoutTelefone">
 
         <EditText
             android:id="@+id/dataDeNascimento"
@@ -169,13 +170,13 @@
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout15"
+        android:id="@+id/inputLayoutEndereco"
         android:layout_width="338dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/addFirebase"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout12">
+        app:layout_constraintTop_toBottomOf="@+id/inputLayoutCEP">
 
         <EditText
             android:id="@+id/endereco"
