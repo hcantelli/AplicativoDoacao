@@ -101,7 +101,7 @@ public class Cadastro extends AppCompatActivity{
 //                                      auth/weak-password
 //                                      Thrown if the password is not strong enough.
                                             Log.e("ERROR", task.getException().toString());
-                                            Toast.makeText(Cadastro.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                            Toast.makeText(Cadastro.this, task.getException().getLocalizedMessage(), Toast.LENGTH_LONG).show();
                                         }
                                     }
                                 });
@@ -123,7 +123,7 @@ public class Cadastro extends AppCompatActivity{
 
     }
 
-    private void inicializaVariaveis(){
+     private void inicializaVariaveis(){
         mFirebaseButton = (Button) findViewById(R.id.addFirebase);
 
         inputLayoutNomeUsuario = (TextInputLayout) findViewById(R.id.inputLayoutNomeUsuario);
