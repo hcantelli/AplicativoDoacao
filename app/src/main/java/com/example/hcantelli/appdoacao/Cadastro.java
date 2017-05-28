@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,6 +31,7 @@ public class Cadastro extends AppCompatActivity{
     private DatabaseReference mDatabase;
     private EditText view_nomeUsuario, view_email, view_dataDeNascimento, view_telefone, view_endereco, view_cep, view_cpf, view_password;
     private TextInputLayout inputLayoutNomeUsuario, inputLayoutEmail, inputLayoutDataDeNascimento, inputLayoutTelefone, inputLayoutEndereco, inputLayoutCEP, inputLayoutCPF, inputLayoutPassword;
+    private TextWatcher cpfMask, dataDeNascimentoMask, telefoneMask, cepMask;
     private FirebaseAuth firebaseAuth;
 
 
@@ -41,11 +43,12 @@ public class Cadastro extends AppCompatActivity{
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        final int usuario = bundle.getInt("Usuario");
+        final long usuario = bundle.getLong("Usuario");
         mDatabase = FirebaseDatabase.getInstance().getReference();
         firebaseAuth = FirebaseAuth.getInstance();
 
         inicializaVariaveis();
+
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -59,7 +62,7 @@ public class Cadastro extends AppCompatActivity{
                 final String email = view_email.getText().toString().trim();
 
                 if(validaVariaveis()){
-                    final ProgressDialog progressDialog = ProgressDialog.show(Cadastro.this, "Por favor, aguarde...", "Processando...", true);
+                    final ProgressDialog progressDialog = ProgressDialog.show(Cadastro.this, getText(R.string.aguarde), getText(R.string.processando), true);
                     mDatabase.child("Usuarios").child("Usuario" + usuario).setValue(registraUsuario()).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -71,9 +74,22 @@ public class Cadastro extends AppCompatActivity{
                                         progressDialog.dismiss();
 
                                         if (task.isSuccessful()) {
-                                            Toast.makeText(Cadastro.this, "Cadastro feito com Sucesso!", Toast.LENGTH_LONG).show();
-                                            Intent intent1 = new Intent(Cadastro.this, MainActivity.class);
-                                            startActivity(intent1);
+                                            (firebaseAuth.signInWithEmailAndPassword(email, senha)).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                                    progressDialog.dismiss();
+
+                                                    if(task.isSuccessful()){
+                                                        Toast.makeText(Cadastro.this, getText(R.string.cadastro_sucesso), Toast.LENGTH_LONG).show();
+                                                        Intent intent1 = new Intent(Cadastro.this, HomePage.class);
+                                                        startActivity(intent1);
+                                                    } else {
+                                                        Log.e("ERROR", task.getException().toString());
+                                                        Toast.makeText(Cadastro.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                                    }
+
+                                                }
+                                            });
                                         } else {
 //                                      fazer tratativas de erro para cada erro
 //                                      auth/email-already-in-use
@@ -91,7 +107,7 @@ public class Cadastro extends AppCompatActivity{
                                 });
 
                             } else {
-                                Toast.makeText(Cadastro.this, "Ops... Ocorreu algum erro no Cadastro. Tente novamente.", Toast.LENGTH_LONG).show();
+                                Toast.makeText(Cadastro.this, getText(R.string.cadastro_erro), Toast.LENGTH_LONG).show();
                             }
 
                         }
@@ -132,6 +148,18 @@ public class Cadastro extends AppCompatActivity{
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(view_nomeUsuario, InputMethodManager.SHOW_IMPLICIT);
 
+        cpfMask = Mask.insert("###.###.###-##", view_cpf);
+        view_cpf.addTextChangedListener(cpfMask);
+
+        dataDeNascimentoMask = Mask.insert("##/##/####", view_dataDeNascimento);
+        view_dataDeNascimento.addTextChangedListener(dataDeNascimentoMask);
+
+        telefoneMask = Mask.insert("(##)#####-####", view_telefone);
+        view_telefone.addTextChangedListener(telefoneMask);
+
+        cepMask = Mask.insert("#####-###", view_cep);
+        view_cep.addTextChangedListener(cepMask);
+
     }
 
     private HashMap<String, String> registraUsuario(){
@@ -157,16 +185,16 @@ public class Cadastro extends AppCompatActivity{
     }
 
     public boolean onOptionsItemSelected (MenuItem item){
-        if(item.getItemId()==android.R.id.home)
+        if(item.getItemId()== android.R.id.home)
             finish();
         return super.onOptionsItemSelected(item);
     }
-//COLOCAR TODAS AS VARIÁVEIS STRINGS QUE ESTÃO SENDO UTILIZADAS NO ARQUIVO STRING.XML!!!!
+
     private boolean validaVariaveis(){
         boolean isValid = true;
 
         if(view_nomeUsuario.getText().toString().isEmpty()){
-            inputLayoutNomeUsuario.setError("Campo obrigatório");
+            inputLayoutNomeUsuario.setError(getText(R.string.obrigatorio));
             isValid = false;
 
         } else {
@@ -174,49 +202,64 @@ public class Cadastro extends AppCompatActivity{
         }
 
         if(view_email.getText().toString().isEmpty()){
-            inputLayoutEmail.setError("Campo obrigatório");
+            inputLayoutEmail.setError(getText(R.string.obrigatorio));
             isValid = false;
         }else{
             inputLayoutEmail.setErrorEnabled(false);
         }
-//fazer validação de campo
+
         if(view_dataDeNascimento.getText().toString().isEmpty()){
-            inputLayoutDataDeNascimento.setError("Campo obrigatório");
+            inputLayoutDataDeNascimento.setError(getText(R.string.obrigatorio));
+            isValid = false;
+        } else if (view_dataDeNascimento.getText().toString().length() < 10){
+            inputLayoutDataDeNascimento.setError(getText(R.string.dobinvalid));
             isValid = false;
         } else {
             inputLayoutDataDeNascimento.setErrorEnabled(false);
         }
-//fazer validação de campo
+
         if(view_telefone.getText().toString().isEmpty()){
-            inputLayoutTelefone.setError("Campo obrigatório");
+            inputLayoutTelefone.setError(getText(R.string.obrigatorio));
+            isValid = false;
+        } else if (view_telefone.getText().toString().length() < 14) {
+            inputLayoutTelefone.setError(getText(R.string.telefoneinvalid));
             isValid = false;
         } else {
             inputLayoutTelefone.setErrorEnabled(false);
         }
 
         if(view_endereco.getText().toString().isEmpty()){
-            inputLayoutEndereco.setError("Campo obrigatório");
+            inputLayoutEndereco.setError(getText(R.string.obrigatorio));
             isValid = false;
         } else {
             inputLayoutEndereco.setErrorEnabled(false);
         }
-//fazer validação de campo
+
         if(view_cep.getText().toString().isEmpty()){
-            inputLayoutCEP.setError("Campo obrigatório");
+            inputLayoutCEP.setError(getText(R.string.obrigatorio));
+            isValid = false;
+        } else if (view_cep.getText().toString().length() < 9) {
+            inputLayoutCEP.setError(getText(R.string.cepinvalid));
             isValid = false;
         } else {
             inputLayoutCEP.setErrorEnabled(false);
         }
-//fazer validação de campo
+
         if(view_cpf.getText().toString().isEmpty()){
-            inputLayoutCPF.setError("Campo obrigatório");
+            inputLayoutCPF.setError(getText(R.string.obrigatorio));
+            isValid = false;
+        } else if (view_cpf.getText().toString().length() < 14) {
+            inputLayoutCPF.setError(getText(R.string.cpfinvalid));
             isValid = false;
         } else {
             inputLayoutCPF.setErrorEnabled(false);
         }
-//fazer validação de campo
+
         if(view_password.getText().toString().isEmpty()){
-            inputLayoutPassword.setError("Campo obrigatório");
+            inputLayoutPassword.setError(getText(R.string.obrigatorio));
+            isValid = false;
+        } else if (view_password.getText().toString().length() < 8) {
+            inputLayoutPassword.setError(getText(R.string.passwordinvalid));
             isValid = false;
         } else {
             inputLayoutPassword.setErrorEnabled(false);

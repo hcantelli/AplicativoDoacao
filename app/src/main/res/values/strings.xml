@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">AppDoacao</string>
+    <string name="cadastro">Cadastro</string>
+    <string name="login">LogIn</string>
+    <string name="aguarde">Por favor, aguarde...</string>
+    <string name="processando">Processando...</string>
+    <string name="login_sucesso">LogIn feito com Sucesso!</string>
+    <string name="cadastro_sucesso">Cadastro feito com Sucesso!</string>
+    <string name="cadastro_erro">Ops... Ocorreu algum erro no Cadastro. Tente novamente.</string>
+    <string name="obrigatorio">Campo obrigatório</string>
+    <string name="cep">CEP</string>
+    <string name="password">Senha</string>
+    <string name="email">Email</string>
+    <string name="cpf">CPF</string>
+    <string name="btn_cadastro">Finalizar Cadastro</string>
+    <string name="nomeUsuario">Nome Completo</string>
+    <string name="telefone">Telefone</string>
+    <string name="dataDeNascimento">Data de Nascimento</string>
+    <string name="endereco">Endereço</string>
+    <string name="homepage">Página Inicial</string>
+    <string name="dobinvalid">Data de Nascimento inválida</string>
+    <string name="telefoneinvalid">Telefone inválido</string>
+    <string name="cepinvalid">CEP inválido</string>
+    <string name="cpfinvalid">CPF inválido</string>
+    <string name="passwordinvalid">Senha com no mínimo 8 caracteres</string>
+
 </resources>
