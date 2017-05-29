@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.hcantelli.appdoacao">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -48,6 +50,65 @@
             android:label="@string/homepage"
             android:screenOrientation="portrait"
             >
+            <intent-filter>
+                <action android:name="com.example.hcantelli.appdoacao.HomePage" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.example.hcantelli.appdoacao.Formulario1"
+            android:label="@string/formulario"
+            android:screenOrientation="portrait"
+            >
+            <intent-filter>
+                <action android:name="com.example.hcantelli.appdoacao.Formulario1" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.example.hcantelli.appdoacao.Formulario2"
+            android:label="@string/formulario"
+            android:screenOrientation="portrait"
+            >
+            <intent-filter>
+                <action android:name="com.example.hcantelli.appdoacao.Formulario2" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.example.hcantelli.appdoacao.Formulario3"
+            android:label="@string/formulario"
+            android:screenOrientation="portrait"
+            >
+            <intent-filter>
+                <action android:name="com.example.hcantelli.appdoacao.Formulario3" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.example.hcantelli.appdoacao.Formulario4"
+            android:label="@string/formulario"
+            android:screenOrientation="portrait"
+            >
+            <intent-filter>
+                <action android:name="com.example.hcantelli.appdoacao.Formulario4" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.example.hcantelli.appdoacao.ListaDeAnimais"
+            android:label="@string/lista"
+            android:screenOrientation="portrait"
+            >
+            <intent-filter>
+                <action android:name="com.example.hcantelli.appdoacao.ListaDeAnimais" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
 
     </application>

@@ -6,6 +6,7 @@
     <string name="processando">Processando...</string>
     <string name="login_sucesso">LogIn feito com Sucesso!</string>
     <string name="cadastro_sucesso">Cadastro feito com Sucesso!</string>
+    <string name="login_erro">Login inválido. Tente novamente.</string>
     <string name="cadastro_erro">Ops... Ocorreu algum erro no Cadastro. Tente novamente.</string>
     <string name="obrigatorio">Campo obrigatório</string>
     <string name="cep">CEP</string>
@@ -23,5 +24,25 @@
     <string name="cepinvalid">CEP inválido</string>
     <string name="cpfinvalid">CPF inválido</string>
     <string name="passwordinvalid">Senha com no mínimo 8 caracteres</string>
+    <string name="bemvindo">Bem vindo(a): </string>
+    <string name="selecionar">Selecione o que deseja realizar</string>
+    <string name="formulario">Formulário</string>
+    <string name="lista">Lista de Animais</string>
+    <string name="pergunta1">Pergunta 1</string>
+    <string name="textoRadioButton1">0 a 6 horas/dia</string>
+    <string name="textoRadioButton2">6 a 12 horas/dia</string>
+    <string name="textoRadioButton3">12 a 18 horas/dia</string>
+    <string name="textoRadioButton4">18 a 24 horas/dia</string>
+    <string name="textoRadioButton5">Só fico em casa de fim de semana</string>
+    <string name="pergunta2">Pergunta 2</string>
+    <string name="textoRadioButton6">Praticar atividade física</string>
+    <string name="textoRadioButton7">Utilizar o computador</string>
+    <string name="textoRadioButton8">Assistir televisão</string>
+    <string name="textoRadioButton9">Viajar</string>
+    <string name="textoRadioButton10">Receber visitas</string>
+    <string name="btn_form1">Próxima etapa</string>
+
+
+
 
 </resources>

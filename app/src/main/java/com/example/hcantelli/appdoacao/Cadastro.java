@@ -63,64 +63,43 @@ public class Cadastro extends AppCompatActivity{
 
                 if(validaVariaveis()){
                     final ProgressDialog progressDialog = ProgressDialog.show(Cadastro.this, getText(R.string.aguarde), getText(R.string.processando), true);
-                    mDatabase.child("Usuarios").child("Usuario" + usuario).setValue(registraUsuario()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
+
+                    (firebaseAuth.createUserWithEmailAndPassword(email, senha)).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @ Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            progressDialog.dismiss();
                             if (task.isSuccessful()) {
-
-                                (firebaseAuth.createUserWithEmailAndPassword(email, senha)).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                mDatabase.child("Usuarios").child("Usuario" + usuario).setValue(registraUsuario()).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
-                                    public void onComplete(@NonNull Task<AuthResult> task) {
-                                        progressDialog.dismiss();
-
+                                    public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
                                             (firebaseAuth.signInWithEmailAndPassword(email, senha)).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<AuthResult> task) {
-                                                    progressDialog.dismiss();
-
                                                     if(task.isSuccessful()){
                                                         Toast.makeText(Cadastro.this, getText(R.string.cadastro_sucesso), Toast.LENGTH_LONG).show();
                                                         Intent intent1 = new Intent(Cadastro.this, HomePage.class);
                                                         startActivity(intent1);
                                                     } else {
                                                         Log.e("ERROR", task.getException().toString());
-                                                        Toast.makeText(Cadastro.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                                        Toast.makeText(Cadastro.this, getText(R.string.cadastro_erro), Toast.LENGTH_LONG).show();
                                                     }
-
                                                 }
                                             });
                                         } else {
-//                                      fazer tratativas de erro para cada erro
-//                                      auth/email-already-in-use
-//                                      Thrown if there already exists an account with the given email address.
-//                                      auth/invalid-email
-//                                      Thrown if the email address is not valid.
-//                                      auth/operation-not-allowed
-//                                      Thrown if email/password accounts are not enabled. Enable email/password accounts in the Firebase Console, under the Auth tab.
-//                                      auth/weak-password
-//                                      Thrown if the password is not strong enough.
-                                            Log.e("ERROR", task.getException().toString());
-                                            Toast.makeText(Cadastro.this, task.getException().getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                                            Toast.makeText(Cadastro.this, getText(R.string.cadastro_erro), Toast.LENGTH_LONG).show();
                                         }
                                     }
                                 });
-
                             } else {
+                                Log.e("ERROR", task.getException().toString());
                                 Toast.makeText(Cadastro.this, getText(R.string.cadastro_erro), Toast.LENGTH_LONG).show();
                             }
-
                         }
                     });
                 }
-
-
-
             }
         });
-
-
-
     }
 
      private void inicializaVariaveis(){
