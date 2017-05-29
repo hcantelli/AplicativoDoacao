@@ -28,21 +28,58 @@
     <string name="selecionar">Selecione o que deseja realizar</string>
     <string name="formulario">Formulário</string>
     <string name="lista">Lista de Animais</string>
-    <string name="pergunta1">Pergunta 1</string>
+    <string name="pergunta1">Quanto tempo você passa fora de casa?</string>
     <string name="textoRadioButton1">0 a 6 horas/dia</string>
     <string name="textoRadioButton2">6 a 12 horas/dia</string>
     <string name="textoRadioButton3">12 a 18 horas/dia</string>
     <string name="textoRadioButton4">18 a 24 horas/dia</string>
     <string name="textoRadioButton5">Só fico em casa de fim de semana</string>
-    <string name="pergunta2">Pergunta 2</string>
+    <string name="pergunta2">O que você costuma fazer em seu tempo livre?</string>
     <string name="textoRadioButton6">Praticar atividade física</string>
     <string name="textoRadioButton7">Utilizar o computador</string>
     <string name="textoRadioButton8">Assistir televisão</string>
     <string name="textoRadioButton9">Viajar</string>
     <string name="textoRadioButton10">Receber visitas</string>
     <string name="btn_form1">Próxima etapa</string>
-
-
+    <string name="pergunta3">Quantas pessoas moram contigo?</string>
+    <string name="textoRadioButton11">0 – Moro sozinho (a)</string>
+    <string name="textoRadioButton12">1</string>
+    <string name="textoRadioButton13">2</string>
+    <string name="textoRadioButton14">3</string>
+    <string name="textoRadioButton15">4 ou mais</string>
+    <string name="pergunta4">Dentre estas características, qual você se identifica mais?</string>
+    <string name="textoRadioButton16">Carinhoso (a)</string>
+    <string name="textoRadioButton17">Agitado (a)</string>
+    <string name="textoRadioButton18">Depressivo (a)</string>
+    <string name="textoRadioButton19">Organizado (a)</string>
+    <string name="textoRadioButton20">Distraído (a)</string>
+    <string name="btn_form2">Próxima etapa</string>
+    <string name="pergunta5">Quantos menores de 12 anos vivem em sua moradia?</string>
+    <string name="textoRadioButton21">0</string>
+    <string name="textoRadioButton22">1</string>
+    <string name="textoRadioButton23">2</string>
+    <string name="textoRadioButton24">3</string>
+    <string name="textoRadioButton25">4 ou mais</string>
+    <string name="pergunta6">Quantos animais você possui?</string>
+    <string name="textoRadioButton26">0</string>
+    <string name="textoRadioButton27">1</string>
+    <string name="textoRadioButton28">2</string>
+    <string name="textoRadioButton29">3</string>
+    <string name="textoRadioButton30">4 ou mais</string>
+    <string name="btn_form3">Próxima etapa</string>
+    <string name="pergunta7">Dentre as opções a seguir, como você caracteriza a sua moradia?</string>
+    <string name="textoRadioButton31">Apartamento sem varanda</string>
+    <string name="textoRadioButton32">Apartamento com varanda</string>
+    <string name="textoRadioButton33">Casa com quintal</string>
+    <string name="textoRadioButton34">Casa sem quintal</string>
+    <string name="textoRadioButton35">Sítio/Chácara</string>
+    <string name="pergunta8">Qual o tamanho da sua moradia?</string>
+    <string name="textoRadioButton36">0 a 30m²</string>
+    <string name="textoRadioButton37">31 a 80m²</string>
+    <string name="textoRadioButton38">81 a 130m²</string>
+    <string name="textoRadioButton39">131 a 181m²</string>
+    <string name="textoRadioButton40">Acima de 181m²</string>
+    <string name="btn_form4">Finalizar</string>
 
 
 </resources>

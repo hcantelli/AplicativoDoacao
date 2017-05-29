@@ -49,7 +49,7 @@ public class HomePage extends AppCompatActivity {
                     }
                 }
                 nome_display.setText(getText(R.string.bemvindo) + "\n" + usuarioNome + "\n\n" + getText(R.string.selecionar));
-                contador = count;
+                contador = count--;
             }
 
             @Override

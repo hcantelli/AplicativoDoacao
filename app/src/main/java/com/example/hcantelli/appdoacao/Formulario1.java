@@ -1,13 +1,14 @@
 package com.example.hcantelli.appdoacao;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 import android.widget.Button;
 
 import com.google.firebase.database.DatabaseReference;
@@ -38,7 +39,12 @@ public class Formulario1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                mDatabase.child("Formulario").child("Usuario" + usuario).child("pergunta1").setValue(btn_radio1.getText());
+
+                mDatabase.child("Formulario").child("Usuario" + usuario).child("pergunta1").setValue(btn_radio1.getText().toString().trim());
+                mDatabase.child("Formulario").child("Usuario" + usuario).child("pergunta2").setValue(btn_radio2.getText().toString().trim());
+                Intent intent2 = new Intent(Formulario1.this, Formulario2.class);
+                intent2.putExtra(("Usuarios"),usuario);
+                startActivity(intent2);
 
             }
         });

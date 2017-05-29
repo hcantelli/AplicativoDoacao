@@ -17,7 +17,7 @@
     <RadioGroup
         android:id="@+id/grupoPergunta1"
         android:layout_width="338dp"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="5dp">
 
         <RadioButton
@@ -26,7 +26,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="grupoPergunta1Click"
-            android:text="@string/textoRadioButton1" />
+            android:text="@string/textoRadioButton1"
+            android:textSize="14sp" />
 
         <RadioButton
             android:id="@+id/radioButton2"
@@ -66,15 +67,14 @@
         android:id="@+id/pergunta2"
         android:layout_width="338dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_weight="0.64"
+        android:layout_marginTop="25dp"
         android:text="@string/pergunta2"
         android:textSize="20sp" />
 
     <RadioGroup
         android:id="@+id/grupoPergunta2"
         android:layout_width="338dp"
-        android:layout_height="195dp">
+        android:layout_height="wrap_content">
 
         <RadioButton
             android:id="@+id/radioButton6"
@@ -121,6 +121,7 @@
         android:id="@+id/btn_formulario1"
         android:layout_width="338dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/btn_form1" />
 
 </LinearLayout>
