@@ -9,47 +9,44 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".MainActivity"
-            android:screenOrientation="portrait"
-            >
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+
                 <action android:name="android.intent.action.BUTTON" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.example.hcantelli.appdoacao.Cadastro"
+            android:name=".Cadastro"
             android:label="@string/cadastro"
-            android:screenOrientation="portrait"
-            >
-        <intent-filter>
-            <action android:name="com.example.hcantelli.appdoacao.Cadastro" />
-            <category android:name="android.intent.category.DEFAULT" />
-        </intent-filter>
-        </activity>
-
-        <activity
-            android:name="com.example.hcantelli.appdoacao.LogIn"
-            android:label="@string/login"
-            android:screenOrientation="portrait"
-            >
+            android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="com.example.hcantelli.appdoacao.LogIn" />
+                <action android:name="com.example.hcantelli.appdoacao.Cadastro" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.example.hcantelli.appdoacao.HomePage"
-            android:label="@string/homepage"
-            android:screenOrientation="portrait"
-            >
-        </activity>
+            android:name=".LogIn"
+            android:label="@string/login"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.example.hcantelli.appdoacao.LogIn" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".HomePage"
+            android:label="@string/homepage"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".tela_animal"></activity>
     </application>
 
 </manifest>
