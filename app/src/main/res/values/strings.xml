@@ -81,5 +81,6 @@
     <string name="textoRadioButton40">Acima de 181m²</string>
     <string name="btn_form4">Finalizar</string>
     <string name="telaanimal">Tela Animal</string>
+    <string name="title_activity_localizacao_ong">Map</string>
 
 </resources>

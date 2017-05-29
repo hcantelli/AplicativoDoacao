@@ -1,7 +1,9 @@
 package com.example.hcantelli.appdoacao;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -47,7 +49,17 @@ public class TelaAnimal extends AppCompatActivity {
 
             }
         });
-        
+//fazer webeservice com mapsapi, pegar lat e long, clicar na imagem e enviar.
+//        Intent intent = new Intent(TelaAnimal.this, LocalizacaoOng.class);
+//        startActivity(intent);
+        btn_paypal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+        Intent intent = new Intent(TelaAnimal.this, LocalizacaoOng.class);
+        startActivity(intent);
+            }
+        });
+
     }
 
     private void inicializaVariaveis(){
