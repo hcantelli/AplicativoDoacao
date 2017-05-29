@@ -22,7 +22,9 @@
         app:layout_constraintBottom_toTopOf="@+id/btn_login"
         app:layout_constraintTop_toBottomOf="@+id/inputLayoutEmail_login"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent">
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:passwordToggleEnabled="true"
+        >
 
         <EditText
             android:id="@+id/password"

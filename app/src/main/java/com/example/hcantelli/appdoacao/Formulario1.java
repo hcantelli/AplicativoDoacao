@@ -21,6 +21,10 @@ public class Formulario1 extends AppCompatActivity {
     private Button btn_formulario1;
     private DatabaseReference mDatabase;
 
+    @Override
+    public void onBackPressed() {
+    }
+
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.formulario1);

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hcantelli.appdoacao.TelaAnimal">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/fotoAnimal"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                app:srcCompat="@drawable/nyancat" />
+
+            <TextView
+                android:id="@+id/nomeAnimal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fotoAnimal"
+                android:layout_centerHorizontal="true"
+                android:text="Nyan Cat"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/idPorte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/fotoAnimal"
+                android:layout_below="@+id/nomeAnimal"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Porte"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tamanhoAnimal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nomeAnimal"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@+id/idPorte"
+                android:text="Pequeno" />
+
+            <TextView
+                android:id="@+id/idPelagem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/idPorte"
+                android:layout_below="@+id/idPorte"
+                android:layout_marginTop="8dp"
+                android:text="Pelagem"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/pelagemAnimal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/idPorte"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@+id/idPelagem"
+                android:text="Curta" />
+
+            <TextView
+                android:id="@+id/idCor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/idPelagem"
+                android:layout_below="@+id/idPelagem"
+                android:layout_marginTop="8dp"
+                android:text="Cor"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/corAnimal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/idPelagem"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@+id/idCor"
+                android:text="Cinza" />
+
+            <TextView
+                android:id="@+id/idIdade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/idCor"
+                android:layout_below="@+id/idCor"
+                android:layout_marginTop="8dp"
+                android:text="Idade"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/idadeAnimal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/idCor"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@+id/idIdade"
+                android:text="12 anos" />
+
+            <TextView
+                android:id="@+id/itensAnimal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/idIdade"
+                android:layout_below="@+id/idIdade"
+                android:layout_marginTop="8dp"
+                android:maxLines="3"
+                android:minLines="2"
+                android:text="Castrado\nPossui pão com geléia" />
+
+            <FrameLayout
+                android:id="@+id/frameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/itensAnimal"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorPrimary">
+
+                <TextView
+                    android:id="@+id/descricaoAnimal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="10"
+                    android:minLines="3"
+                    android:text="Encontrado voando pelo universo.\n\nTinha um pão com geléia grudado no corpo, que não foi tirado devido ao amor demonstrado pelo pão.\n\nGosta de voar e ouvir música."
+                    android:textAlignment="center" />
+
+            </FrameLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/frameLayout"
+                android:layout_below="@+id/frameLayout"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorPrimaryDark">
+
+                <TextView
+                    android:id="@+id/idOng"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ONG"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/nomeOng"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_toEndOf="@+id/idOng"
+                    android:text="Nyandote" />
+
+                <TextView
+                    android:id="@+id/enderecoOng"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/idOng"
+                    android:layout_marginTop="8dp"
+                    android:text="Rua Nyan, 3120 - Cat" />
+
+                <TextView
+                    android:id="@+id/telefoneOng"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/enderecoOng"
+                    android:layout_marginTop="8dp"
+                    android:text="(11) 9876-5432" />
+
+                <TextView
+                    android:id="@+id/emailOng"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/telefoneOng"
+                    android:layout_marginTop="8dp"
+                    android:text="nyan@cat.com" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/descricaoBotao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/relativeLayout"
+                android:layout_below="@+id/relativeLayout"
+                android:layout_marginTop="24dp"
+                android:text="Selecione o botão abaixo para doar para a ONG ou ligue para a ONG para agendar uma visita" />
+
+            <Button
+                android:id="@+id/btn_paypal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/descricaoBotao"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:text="Adotar" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>
