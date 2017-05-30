@@ -6,10 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.example.hcantelli.appdoacao.TelaAnimal">
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="-501dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -194,14 +196,26 @@
                     android:layout_marginTop="8dp"
                     android:text="nyan@cat.com" />
 
+
             </RelativeLayout>
+
+            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_alignStart="@+id/relativeLayout"
+                android:layout_below="@+id/relativeLayout"
+                android:layout_marginTop="24dp"
+                tools:context="com.example.hcantelli.appdoacao.ListaDeAnimais" />
 
             <TextView
                 android:id="@+id/descricaoBotao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/relativeLayout"
-                android:layout_below="@+id/relativeLayout"
+                android:layout_alignStart="@+id/map"
+                android:layout_below="@+id/map"
                 android:layout_marginTop="24dp"
                 android:text="Selecione o botão abaixo para doar para a ONG ou ligue para a ONG para agendar uma visita" />
 
