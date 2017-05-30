@@ -53,7 +53,7 @@ public class LogIn extends AppCompatActivity {
 
     private void startSignIn(){
 
-        String email = email_login.getText().toString().trim();
+        final String email = email_login.getText().toString().trim();
         String password = view_password.getText().toString().trim();
 
         final ProgressDialog progressDialog = ProgressDialog.show(LogIn.this, getText(R.string.aguarde), getText(R.string.processando), true);
@@ -68,7 +68,7 @@ public class LogIn extends AppCompatActivity {
                     startActivity(intent);
                 } else {
                     Log.e("ERROR", task.getException().toString());
-                    Toast.makeText(LogIn.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(LogIn.this, getText(R.string.login_erro), Toast.LENGTH_LONG).show();
                 }
 
             }

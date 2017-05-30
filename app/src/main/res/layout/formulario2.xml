@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    >
+
+    <TextView
+        android:id="@+id/pergunta3"
+        android:layout_width="338dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/pergunta3"
+        android:textSize="20sp" />
+
+    <RadioGroup
+        android:id="@+id/grupoPergunta3"
+        android:layout_width="338dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <RadioButton
+            android:id="@+id/radioButton11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="grupoPergunta3Click"
+            android:text="@string/textoRadioButton11" />
+
+        <RadioButton
+            android:id="@+id/radioButton12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="grupoPergunta3Click"
+            android:text="@string/textoRadioButton12" />
+
+        <RadioButton
+            android:id="@+id/radioButton13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="grupoPergunta3Click"
+            android:text="@string/textoRadioButton13" />
+
+        <RadioButton
+            android:id="@+id/radioButton14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="grupoPergunta3Click"
+            android:text="@string/textoRadioButton14" />
+
+        <RadioButton
+            android:id="@+id/radioButton15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="grupoPergunta3Click"
+            android:text="@string/textoRadioButton15" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/pergunta4"
+        android:layout_width="338dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="@string/pergunta4"
+        android:textSize="20sp" />
+
+    <RadioGroup
+        android:id="@+id/grupoPergunta4"
+        android:layout_width="338dp"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/radioButton16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="grupoPergunta4Click"
+            android:text="@string/textoRadioButton16" />
+
+        <RadioButton
+            android:id="@+id/radioButton17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="grupoPergunta4Click"
+            android:text="@string/textoRadioButton17" />
+
+        <RadioButton
+            android:id="@+id/radioButton18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="grupoPergunta4Click"
+            android:text="@string/textoRadioButton18" />
+
+        <RadioButton
+            android:id="@+id/radioButton19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="grupoPergunta4Click"
+            android:text="@string/textoRadioButton19" />
+
+        <RadioButton
+            android:id="@+id/radioButton20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="grupoPergunta4Click"
+            android:text="@string/textoRadioButton20" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_formulario2"
+        android:layout_width="338dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="@string/btn_form2" />
+
+</LinearLayout>
