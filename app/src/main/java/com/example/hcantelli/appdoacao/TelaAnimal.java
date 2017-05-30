@@ -1,16 +1,20 @@
 package com.example.hcantelli.appdoacao;
 
 import android.content.Context;
-import android.graphics.Color;
+import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.net.Uri;
+import android.support.customtabs.CustomTabsCallback;
 import android.support.customtabs.CustomTabsIntent;
+import android.support.customtabs.CustomTabsSessionToken;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -74,12 +78,13 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
                 CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
                 String url = "https://helio-integrationbr-2.c9users.io/Tcc_Pagamento/set_express_checkout.php";
                 CustomTabsIntent customTabsIntent = builder.build();
-                builder.setToolbarColor(Color.parseColor("#F5931D"));
+                builder.setToolbarColor(ContextCompat.getColor(TelaAnimal.this, R.color.colorPrimary));
+                builder.setSecondaryToolbarColor(ContextCompat.getColor(TelaAnimal.this, R.color.colorPrimaryDark));
+                builder.setShowTitle(true);
                 customTabsIntent.launchUrl(TelaAnimal.this, Uri.parse(url));
 
             }
         });
-
 
     }
 

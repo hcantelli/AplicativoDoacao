@@ -115,11 +115,24 @@
         <activity
             android:name=".TelaAnimal"
             android:label="@string/telaanimal"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
-                <action android:name="com.example.hcantelli.appdoacao.TelaAnimal" />
-
+                <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".PaginaSucesso"
+            android:label="@string/paginasucesso"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="mytest" />
             </intent-filter>
         </activity>
     </application>
