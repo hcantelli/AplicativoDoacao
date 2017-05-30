@@ -116,17 +116,8 @@
             android:name=".TelaAnimal"
             android:label="@string/telaanimal"
             android:screenOrientation="portrait"
-            >
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".PaginaSucesso"
-            android:label="@string/paginasucesso"
-            android:screenOrientation="portrait"
             android:launchMode="singleTask"
+
             >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -135,6 +126,17 @@
                 <data android:scheme="mytest" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".TelaAnimal2"
+            android:label="@string/paginasucesso"
+            android:screenOrientation="portrait"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
