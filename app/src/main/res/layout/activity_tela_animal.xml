@@ -23,7 +23,7 @@
                 android:layout_height="350dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                app:srcCompat="@drawable/nyancat" />
+                app:srcCompat="@mipmap/nyancat" />
 
             <TextView
                 android:id="@+id/nomeAnimal"

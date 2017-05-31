@@ -9,7 +9,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/nyancat"
+        android:icon="@mipmap/nyancat"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -117,26 +117,35 @@
             android:label="@string/telaanimal"
             android:screenOrientation="portrait"
             android:launchMode="singleTask"
-
             >
             <intent-filter>
+                <action android:name="com.example.hcantelli.appdoacao.TelaAnimal" />
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="mytest" />
+
+
             </intent-filter>
         </activity>
-        <activity
-            android:name=".TelaAnimal2"
+
+        <activity android:name=".TelaAnimalSucesso"
             android:label="@string/paginasucesso"
+
             android:screenOrientation="portrait"
             >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="justanexample.com"
+                    android:port="443"
+                    android:scheme="newscheme" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </activity>
 
+        </activity>
     </application>
 
 </manifest>

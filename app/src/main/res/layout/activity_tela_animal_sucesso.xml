@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.hcantelli.appdoacao.TelaAnimal"
-    android:background="@drawable/img_sucesso"
+    tools:context="com.example.hcantelli.appdoacao.TelaAnimalSucesso"
+    android:background="@mipmap/img_sucesso"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     >
@@ -35,6 +35,5 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintVertical_bias="0.984" />
-
 
 </android.support.constraint.ConstraintLayout>

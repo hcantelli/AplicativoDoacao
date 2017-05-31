@@ -83,6 +83,7 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
                 builder.setShowTitle(true);
                 customTabsIntent.launchUrl(TelaAnimal.this, Uri.parse(url));
 
+
             }
         });
 
