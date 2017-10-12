@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1"
     android:gravity="center_horizontal"
+    android:background="@mipmap/background"
     >
 
     <TextView
@@ -14,7 +14,9 @@
         android:layout_marginTop="25dp"
         android:layout_weight="0.26"
         android:gravity="center_horizontal"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:textColor="@android:color/white"
+        />
 
     <Button
         android:id="@+id/btn_formulario"
@@ -22,7 +24,11 @@
         android:layout_height="48dp"
         android:layout_marginTop="25dp"
         android:layout_weight="0.16"
-        android:text="Realizar Formulário" />
+        android:text="@string/realizar_formulario"
+        android:background="@drawable/botao2"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        />
 
     <Button
         android:id="@+id/btn_listaAnimais"
@@ -30,6 +36,10 @@
         android:layout_height="48dp"
         android:layout_marginTop="25dp"
         android:layout_weight="0.16"
-        android:text="Verificar Lista de Animais" />
+        android:text="@string/verificar_lista"
+        android:background="@drawable/botao1"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        />
 
 </LinearLayout>

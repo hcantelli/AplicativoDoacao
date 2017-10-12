@@ -22,6 +22,9 @@ public class ListaDeAnimais extends AppCompatActivity implements AdapterView.OnI
     private ListView listaDeAnimais;
     private ArrayList<String> listaDeAnimais_array = new ArrayList<>();
 
+    @Override
+    public void onBackPressed() {
+    }
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
