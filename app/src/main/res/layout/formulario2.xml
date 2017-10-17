@@ -22,43 +22,53 @@
 
         <RadioButton
             android:id="@+id/radioButton11"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="grupoPergunta3Click"
-            android:text="@string/textoRadioButton11" />
+            android:text="@string/textoRadioButton11"
+            android:buttonTint="@color/colorPrimaryDark"
+            />
 
         <RadioButton
             android:id="@+id/radioButton12"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="grupoPergunta3Click"
-            android:text="@string/textoRadioButton12" />
+            android:text="@string/textoRadioButton12"
+            android:buttonTint="@color/colorPrimaryDark"
+            />
 
         <RadioButton
             android:id="@+id/radioButton13"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="grupoPergunta3Click"
-            android:text="@string/textoRadioButton13" />
+            android:text="@string/textoRadioButton13"
+            android:buttonTint="@color/colorPrimaryDark"
+            />
 
         <RadioButton
             android:id="@+id/radioButton14"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="grupoPergunta3Click"
-            android:text="@string/textoRadioButton14" />
+            android:text="@string/textoRadioButton14"
+            android:buttonTint="@color/colorPrimaryDark"
+            />
 
         <RadioButton
             android:id="@+id/radioButton15"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="grupoPergunta3Click"
-            android:text="@string/textoRadioButton15" />
+            android:text="@string/textoRadioButton15"
+            android:buttonTint="@color/colorPrimaryDark"
+            />
 
     </RadioGroup>
 
@@ -77,50 +87,64 @@
 
         <RadioButton
             android:id="@+id/radioButton16"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="grupoPergunta4Click"
-            android:text="@string/textoRadioButton16" />
+            android:text="@string/textoRadioButton16"
+            android:buttonTint="@color/colorPrimaryDark"
+            />
 
         <RadioButton
             android:id="@+id/radioButton17"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="grupoPergunta4Click"
-            android:text="@string/textoRadioButton17" />
+            android:text="@string/textoRadioButton17"
+            android:buttonTint="@color/colorPrimaryDark"
+            />
 
         <RadioButton
             android:id="@+id/radioButton18"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="grupoPergunta4Click"
-            android:text="@string/textoRadioButton18" />
+            android:text="@string/textoRadioButton18"
+            android:buttonTint="@color/colorPrimaryDark"
+            />
 
         <RadioButton
             android:id="@+id/radioButton19"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="grupoPergunta4Click"
-            android:text="@string/textoRadioButton19" />
+            android:text="@string/textoRadioButton19"
+            android:buttonTint="@color/colorPrimaryDark"
+            />
 
         <RadioButton
             android:id="@+id/radioButton20"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="grupoPergunta4Click"
-            android:text="@string/textoRadioButton20" />
+            android:text="@string/textoRadioButton20"
+            android:buttonTint="@color/colorPrimaryDark"
+            />
     </RadioGroup>
 
     <Button
         android:id="@+id/btn_formulario2"
-        android:layout_width="338dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:text="@string/btn_form2" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/btn_form2"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/botao1"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        />
 
 </LinearLayout>

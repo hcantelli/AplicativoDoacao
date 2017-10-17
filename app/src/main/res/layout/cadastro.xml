@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:paddingBottom="25dp">
+        android:paddingBottom="20dp">
+
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/inputLayoutNomeUsuario"
@@ -163,13 +163,17 @@
                 android:inputType="textPersonName"
                 tools:layout_editor_absoluteX="11dp"
                 tools:layout_editor_absoluteY="396dp" />
+
         </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/addFirebase"
-            android:layout_width="338dp"
-            android:layout_height="match_parent"
-            android:text="@string/btn_cadastro" />
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/botao1"
+            android:text="@string/btn_cadastro"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
 
 
     </LinearLayout>

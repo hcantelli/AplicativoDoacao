@@ -2,12 +2,12 @@
     <string name="app_name">AppDoacao</string>
     <string name="cadastro">Cadastro</string>
     <string name="login">LogIn</string>
-    <string name="aguarde">Por favor, aguarde...</string>
-    <string name="processando">Processando...</string>
+    <string name="aguarde">Por favor, aguarde&#8230;</string>
+    <string name="processando">Processando&#8230;</string>
     <string name="login_sucesso">LogIn feito com Sucesso!</string>
     <string name="cadastro_sucesso">Cadastro feito com Sucesso!</string>
     <string name="login_erro">Login inválido. Tente novamente.</string>
-    <string name="cadastro_erro">Ops... Ocorreu algum erro no Cadastro. Tente novamente.</string>
+    <string name="cadastro_erro">Ops&#8230; Ocorreu algum erro no Cadastro. Tente novamente.</string>
     <string name="obrigatorio">Campo obrigatório</string>
     <string name="cep">CEP</string>
     <string name="password">Senha</string>
@@ -83,5 +83,7 @@
     <string name="telaanimal">Tela Animal</string>
     <string name="title_activity_localizacao_ong">Map</string>
     <string name="paginasucesso">Obrigado pela Adoção</string>
-
+    <string name="realizar_formulario">Realizar Formulário</string>
+    <string name="verificar_lista">Verificar Lista de Animais</string>
+    <string name="logo">Logo</string>
 </resources>
