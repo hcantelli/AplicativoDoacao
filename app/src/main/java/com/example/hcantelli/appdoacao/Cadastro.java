@@ -78,7 +78,7 @@ public class Cadastro extends AppCompatActivity{
                                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                                     if(task.isSuccessful()){
                                                         Toast.makeText(Cadastro.this, getText(R.string.cadastro_sucesso), Toast.LENGTH_LONG).show();
-                                                        Intent intent1 = new Intent(Cadastro.this, HomePage.class);
+                                                        Intent intent1 = new Intent(Cadastro.this, TelaUsuario.class);
                                                         startActivity(intent1);
                                                     } else {
                                                         Log.e("ERROR", task.getException().toString());
@@ -127,16 +127,16 @@ public class Cadastro extends AppCompatActivity{
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(view_nomeUsuario, InputMethodManager.SHOW_IMPLICIT);
 
-        cpfMask = Mask.insert("###.###.###-##", view_cpf);
+        cpfMask = Mascara.insert("###.###.###-##", view_cpf);
         view_cpf.addTextChangedListener(cpfMask);
 
-        dataDeNascimentoMask = Mask.insert("##/##/####", view_dataDeNascimento);
+        dataDeNascimentoMask = Mascara.insert("##/##/####", view_dataDeNascimento);
         view_dataDeNascimento.addTextChangedListener(dataDeNascimentoMask);
 
-        telefoneMask = Mask.insert("(##)#####-####", view_telefone);
+        telefoneMask = Mascara.insert("(##)#####-####", view_telefone);
         view_telefone.addTextChangedListener(telefoneMask);
 
-        cepMask = Mask.insert("#####-###", view_cep);
+        cepMask = Mascara.insert("#####-###", view_cep);
         view_cep.addTextChangedListener(cepMask);
 
     }
@@ -150,7 +150,7 @@ public class Cadastro extends AppCompatActivity{
         String cep = view_cep.getText().toString().trim();
         String cpf = view_cpf.getText().toString().trim();
 
-        final HashMap<String, String> usuarioMap = new HashMap<String, String>();
+        final HashMap<String, String> usuarioMap = new HashMap<>();
 
         usuarioMap.put("nomeUsuario", nomeUsuario);
         usuarioMap.put("email", email);

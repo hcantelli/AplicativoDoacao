@@ -15,7 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class HomePage extends AppCompatActivity {
+public class TelaUsuario extends AppCompatActivity {
 
     private TextView nome_display;
     private DatabaseReference mDatabase;
@@ -28,7 +28,7 @@ public class HomePage extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_page);
+        setContentView(R.layout.tela_usuario);
 
         final FirebaseUser usuarioLogado = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -61,7 +61,7 @@ public class HomePage extends AppCompatActivity {
         btn_formulario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomePage.this, Formulario1.class);
+                Intent intent = new Intent(TelaUsuario.this, Formulario1.class);
                 intent.putExtra(("Usuarios"), contador);
                 startActivity(intent);
             }
@@ -70,7 +70,7 @@ public class HomePage extends AppCompatActivity {
         btn_listaAnimais.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomePage.this, ListaDeAnimais.class);
+                Intent intent = new Intent(TelaUsuario.this, ListaDeAnimais.class);
                 startActivity(intent);
             }
         });

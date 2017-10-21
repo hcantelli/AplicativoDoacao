@@ -1,29 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.hcantelli.appdoacao">
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/nyancat"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/nyancat"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".TelaInicial"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
-
                 <action android:name="android.intent.action.BUTTON" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -33,7 +28,6 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="com.example.hcantelli.appdoacao.Cadastro" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -43,17 +37,15 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="com.example.hcantelli.appdoacao.LogIn" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".HomePage"
+            android:name=".TelaUsuario"
             android:label="@string/homepage"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="com.example.hcantelli.appdoacao.HomePage" />
-
+                <action android:name="com.example.hcantelli.appdoacao.TelaUsuario" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -63,7 +55,6 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="com.example.hcantelli.appdoacao.Formulario1" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -73,7 +64,6 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="com.example.hcantelli.appdoacao.Formulario2" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -83,7 +73,6 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="com.example.hcantelli.appdoacao.Formulario3" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -93,59 +82,29 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="com.example.hcantelli.appdoacao.Formulario4" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
         <activity
             android:name=".ListaDeAnimais"
             android:label="@string/lista"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="com.example.hcantelli.appdoacao.ListaDeAnimais" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
             android:name=".TelaAnimal"
             android:label="@string/telaanimal"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTask"
-            >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="com.example.hcantelli.appdoacao.TelaAnimal" />
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-
-
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".TelaAnimalSucesso"
-            android:label="@string/paginasucesso"
-
-            android:screenOrientation="portrait"
-            >
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data
-                    android:host="justanexample.com"
-                    android:port="443"
-                    android:scheme="newscheme" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
         </activity>
     </application>
-
 </manifest>

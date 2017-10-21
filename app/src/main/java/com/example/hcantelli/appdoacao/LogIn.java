@@ -19,7 +19,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class LogIn extends AppCompatActivity {
 
@@ -64,7 +63,7 @@ public class LogIn extends AppCompatActivity {
 
                 if(task.isSuccessful()){
                     Toast.makeText(LogIn.this, getText(R.string.login_sucesso), Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(LogIn.this, HomePage.class);
+                    Intent intent = new Intent(LogIn.this, TelaUsuario.class);
                     startActivity(intent);
                 } else {
                     Log.e("ERROR", task.getException().toString());

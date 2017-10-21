@@ -43,6 +43,11 @@ public class Formulario1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+//                RadioGroup g = grupoPergunta1;
+//                int selected = g.getCheckedRadioButtonId();
+//                RadioButton b = (RadioButton) findViewById(selected);
+//                b.getText();
+
 
                 mDatabase.child("Formulario").child("Usuario" + usuario).child("pergunta1").setValue(btn_radio1.getText().toString().trim());
                 mDatabase.child("Formulario").child("Usuario" + usuario).child("pergunta2").setValue(btn_radio2.getText().toString().trim());
@@ -54,6 +59,7 @@ public class Formulario1 extends AppCompatActivity {
         });
 
     }
+
 
     public void grupoPergunta1Click (View v){
         int radioButtonId1 = grupoPergunta1.getCheckedRadioButtonId();
