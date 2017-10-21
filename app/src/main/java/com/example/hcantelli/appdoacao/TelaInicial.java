@@ -14,24 +14,24 @@ import com.google.firebase.database.ValueEventListener;
 
 public class TelaInicial extends AppCompatActivity {
 
-    private Button btn_login;
-    private Button btn_cadastro;
-    private DatabaseReference mDatabase;
+    private Button botao_login;
+    private Button botao_cadastro;
+    private DatabaseReference bancoDeDados_firebase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_inicial);
 
-        btn_cadastro = (Button) findViewById(R.id.btn_cadastro);
-        btn_login = (Button) findViewById(R.id.btn_login);
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        botao_cadastro = (Button) findViewById(R.id.botao_cadastro);
+        botao_login = (Button) findViewById(R.id.botao_login);
+        bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference();
 
-        btn_cadastro.setOnClickListener(new View.OnClickListener() {
+        botao_cadastro.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
 
-                mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                bancoDeDados_firebase.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         Intent intent = new Intent("com.example.hcantelli.appdoacao.Cadastro");
@@ -51,7 +51,7 @@ public class TelaInicial extends AppCompatActivity {
 
         });
 
-        btn_login.setOnClickListener(new View.OnClickListener() {
+        botao_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

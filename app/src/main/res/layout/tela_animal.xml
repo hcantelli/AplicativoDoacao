@@ -23,6 +23,7 @@
                 android:layout_height="350dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
+                android:contentDescription="Nyan Cat"
                 app:srcCompat="@mipmap/nyancat" />
 
             <TextView
@@ -135,7 +136,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/itensAnimal"
                 android:layout_marginTop="16dp"
-                android:background="@color/colorPrimary">
+                android:background="@color/corPrimaria">
 
                 <TextView
                     android:id="@+id/descricaoAnimal"
@@ -155,7 +156,7 @@
                 android:layout_alignStart="@+id/frameLayout"
                 android:layout_below="@+id/frameLayout"
                 android:layout_marginTop="16dp"
-                android:background="@color/colorPrimaryDark">
+                android:background="@color/corPrimariaEscura">
 
                 <TextView
                     android:id="@+id/idOng"

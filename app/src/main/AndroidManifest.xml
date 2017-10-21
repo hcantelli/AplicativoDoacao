@@ -8,7 +8,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/nyancat"
-        android:label="@string/app_name"
+        android:label="@string/nomeApp"
         android:roundIcon="@mipmap/nyancat"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -20,6 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
                 <action android:name="android.intent.action.BUTTON" />
                 <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
         <activity
@@ -42,7 +43,7 @@
         </activity>
         <activity
             android:name=".TelaUsuario"
-            android:label="@string/homepage"
+            android:label="@string/paginaInicial"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="com.example.hcantelli.appdoacao.TelaUsuario" />
@@ -99,7 +100,7 @@
         </activity>
         <activity
             android:name=".TelaAnimal"
-            android:label="@string/telaanimal"
+            android:label="@string/telaAnimal"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="com.example.hcantelli.appdoacao.TelaAnimal" />

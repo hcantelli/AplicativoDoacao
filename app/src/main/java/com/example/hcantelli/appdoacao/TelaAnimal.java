@@ -3,13 +3,8 @@ package com.example.hcantelli.appdoacao;
 import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
-import android.net.Uri;
-import android.support.customtabs.CustomTabsIntent;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -31,19 +26,19 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
 
     private TextView nomeAnimal, tamanhoAnimal, pelagemAnimal, corAnimal, idadeAnimal;
     private TextView nomeOng, enderecoOng, telefoneOng, emailOng;
-    private DatabaseReference mDatabase;
-    private GoogleMap mMap;
+    private DatabaseReference bancoDeDados_firebase;
+    private GoogleMap mapa_google;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_animal);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Animais").child("Animal1");
+        bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference().child("Animais").child("Animal1");
 
         inicializaVariaveis();
 
-        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+        bancoDeDados_firebase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 nomeAnimal.setText(dataSnapshot.child("Caracteristicas").child("nomeAnimal").getValue().toString().trim());
@@ -81,23 +76,23 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
         emailOng = (TextView) findViewById(R.id.emailOng);
     }
 
-    public LatLng getLocationFromAddress(Context context, String strAddress) {
+    public LatLng pegaLocalizacaoPeloEndereco(Context context, String strAddress) {
 
         Geocoder coder = new Geocoder(context);
-        List<Address> address;
+        List<Address> endereco;
         LatLng p1 = null;
 
         try {
-            address = coder.getFromLocationName(strAddress, 5);
-            if (address == null) {
+            endereco = coder.getFromLocationName(strAddress, 5);
+            if (endereco == null) {
                 return null;
             }
             //erro nessa linha
-            Address location = address.get(0);
-            location.getLatitude();
-            location.getLongitude();
+            Address localizacao = endereco.get(0);
+            localizacao.getLatitude();
+            localizacao.getLongitude();
 
-            p1 = new LatLng(location.getLatitude(), location.getLongitude() );
+            p1 = new LatLng(localizacao.getLatitude(), localizacao.getLongitude() );
 
         } catch (IOException ex) {
 
@@ -109,10 +104,10 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
+        mapa_google = googleMap;
         //erro pode estar relacionado a esta linha
-        LatLng ong = getLocationFromAddress(TelaAnimal.this,enderecoOng.getText().toString());
-        mMap.addMarker(new MarkerOptions().position(ong).title("ONG " + nomeOng.getText().toString()));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ong , 15.0f));
+        LatLng ong = pegaLocalizacaoPeloEndereco(TelaAnimal.this,enderecoOng.getText().toString());
+        mapa_google.addMarker(new MarkerOptions().position(ong).title("ONG " + nomeOng.getText().toString()));
+        mapa_google.moveCamera(CameraUpdateFactory.newLatLngZoom(ong , 15.0f));
     }
 }

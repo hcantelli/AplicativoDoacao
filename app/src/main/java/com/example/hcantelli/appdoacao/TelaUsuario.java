@@ -17,9 +17,9 @@ import com.google.firebase.database.ValueEventListener;
 
 public class TelaUsuario extends AppCompatActivity {
 
-    private TextView nome_display;
-    private DatabaseReference mDatabase;
-    private Button btn_listaAnimais, btn_formulario;
+    private TextView nome_exibido;
+    private DatabaseReference bancoDeDados_firebase;
+    private Button botao_listaAnimais, botao_formulario;
     private long contador;
 
     @Override
@@ -32,12 +32,12 @@ public class TelaUsuario extends AppCompatActivity {
 
         final FirebaseUser usuarioLogado = FirebaseAuth.getInstance().getCurrentUser();
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        nome_display = (TextView) findViewById(R.id.nomeUsuario_hp);
-        btn_listaAnimais = (Button) findViewById(R.id.btn_listaAnimais);
-        btn_formulario = (Button) findViewById(R.id.btn_formulario);
+        bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference();
+        nome_exibido = (TextView) findViewById(R.id.nomeUsuarioExibido);
+        botao_listaAnimais = (Button) findViewById(R.id.botao_listaAnimais);
+        botao_formulario = (Button) findViewById(R.id.botao_formulario);
 
-        mDatabase.addValueEventListener(new ValueEventListener() {
+        bancoDeDados_firebase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String usuarioNome = null;
@@ -48,7 +48,7 @@ public class TelaUsuario extends AppCompatActivity {
                         usuarioNome = dataSnapshot.child("Usuarios").child("Usuario" + count).child("nomeUsuario").getValue().toString();
                     }
                 }
-                nome_display.setText(getText(R.string.bemvindo) + "\n" + usuarioNome + "\n\n" + getText(R.string.selecionar));
+                nome_exibido.setText(getText(R.string.bemvindo) + "\n" + usuarioNome + "\n\n" + getText(R.string.selecionar));
                 contador = count--;
             }
 
@@ -58,7 +58,7 @@ public class TelaUsuario extends AppCompatActivity {
             }
         });
 
-        btn_formulario.setOnClickListener(new View.OnClickListener() {
+        botao_formulario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TelaUsuario.this, Formulario1.class);
@@ -67,7 +67,7 @@ public class TelaUsuario extends AppCompatActivity {
             }
         });
 
-        btn_listaAnimais.setOnClickListener(new View.OnClickListener() {
+        botao_listaAnimais.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TelaUsuario.this, ListaDeAnimais.class);
