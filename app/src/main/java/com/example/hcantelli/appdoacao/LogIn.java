@@ -19,14 +19,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class LogIn extends AppCompatActivity {
 
-    private Button btn_login;
-    private EditText email_login, view_password;
-    private TextInputLayout inputLayoutEmail_login, inputLayoutPassword_login;
-    private FirebaseAuth mAuth;
+    private Button botao_login;
+    private EditText email_login, view_senha;
+    private TextInputLayout inputLayoutEmail_login, inputLayoutSenha_login;
+    private FirebaseAuth autorizacao_firebase;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,33 +37,33 @@ public class LogIn extends AppCompatActivity {
         }
         inicializaVariaveis();
 
-        mAuth = FirebaseAuth.getInstance();
+        autorizacao_firebase = FirebaseAuth.getInstance();
 
-        btn_login.setOnClickListener(new View.OnClickListener() {
+        botao_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(validaVariaveis()){
-                    startSignIn();
+                    inicializaLogin();
                 }
             }
         });
 
     }
 
-    private void startSignIn(){
+    private void inicializaLogin(){
 
         final String email = email_login.getText().toString().trim();
-        String password = view_password.getText().toString().trim();
+        String password = view_senha.getText().toString().trim();
 
         final ProgressDialog progressDialog = ProgressDialog.show(LogIn.this, getText(R.string.aguarde), getText(R.string.processando), true);
-        (mAuth.signInWithEmailAndPassword(email, password)).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        (autorizacao_firebase.signInWithEmailAndPassword(email, password)).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressDialog.dismiss();
 
                 if(task.isSuccessful()){
                     Toast.makeText(LogIn.this, getText(R.string.login_sucesso), Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(LogIn.this, HomePage.class);
+                    Intent intent = new Intent(LogIn.this, TelaUsuario.class);
                     startActivity(intent);
                 } else {
                     Log.e("ERROR", task.getException().toString());
@@ -84,13 +83,13 @@ public class LogIn extends AppCompatActivity {
     }
 
     private void inicializaVariaveis(){
-        btn_login = (Button) findViewById(R.id.btn_login);
+        botao_login = (Button) findViewById(R.id.botao_login);
 
         inputLayoutEmail_login = (TextInputLayout) findViewById(R.id.inputLayoutEmail_login);
-        inputLayoutPassword_login = (TextInputLayout) findViewById(R.id.inputLayoutPassword_login);
+        inputLayoutSenha_login = (TextInputLayout) findViewById(R.id.inputLayoutSenha_login);
 
         email_login = (EditText) findViewById(R.id.email_login);
-        view_password = (EditText) findViewById(R.id.password);
+        view_senha = (EditText) findViewById(R.id.senha);
 
         email_login.requestFocus();
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -107,14 +106,14 @@ public class LogIn extends AppCompatActivity {
         } else {
             inputLayoutEmail_login.setErrorEnabled(false);
         }
-        if(view_password.getText().toString().isEmpty()){
-            inputLayoutPassword_login.setError(getText(R.string.obrigatorio));
+        if(view_senha.getText().toString().isEmpty()){
+            inputLayoutSenha_login.setError(getText(R.string.obrigatorio));
             isValid = false;
-        } else if (view_password.getText().toString().length() < 8) {
-            inputLayoutPassword_login.setError(getText(R.string.passwordinvalid));
+        } else if (view_senha.getText().toString().length() < 8) {
+            inputLayoutSenha_login.setError(getText(R.string.senhaInvalida));
             isValid = false;
         } else {
-            inputLayoutPassword_login.setErrorEnabled(false);
+            inputLayoutSenha_login.setErrorEnabled(false);
         }
 
         return isValid;

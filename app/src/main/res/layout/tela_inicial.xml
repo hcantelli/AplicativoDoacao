@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/banner1"
-    tools:context="com.example.hcantelli.appdoacao.MainActivity">
+    android:background="@mipmap/fundo_tela_principal"
+    tools:context="com.example.hcantelli.appdoacao.TelaInicial">
 
 
     <ImageView
@@ -19,7 +19,7 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <Button
-        android:id="@+id/btn_cadastro"
+        android:id="@+id/botao_cadastro"
         android:layout_width="344dp"
         android:layout_height="50dp"
         android:background="@drawable/botao1"
@@ -33,7 +33,7 @@
         app:layout_constraintVertical_bias="0.965" />
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/botao_login"
         android:layout_width="344dp"
         android:layout_height="50dp"
         android:background="@drawable/botao2"
@@ -42,7 +42,7 @@
         android:textSize="18sp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/btn_cadastro"
+        app:layout_constraintBottom_toTopOf="@+id/botao_cadastro"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintVertical_bias="0.91" />
 </android.support.constraint.ConstraintLayout>

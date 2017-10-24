@@ -54,7 +54,7 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/inputLayoutPassword"
+            android:id="@+id/inputLayoutSenha"
             android:layout_width="338dp"
             android:layout_height="wrap_content"
 
@@ -62,12 +62,12 @@
             app:passwordToggleEnabled="true">
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/senha"
                 android:layout_width="338dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="@string/password"
+                android:hint="@string/senha"
                 android:inputType="textPassword"
                 tools:layout_editor_absoluteX="11dp"
                 tools:layout_editor_absoluteY="130dp" />
@@ -167,11 +167,11 @@
         </android.support.design.widget.TextInputLayout>
 
         <Button
-            android:id="@+id/addFirebase"
+            android:id="@+id/adiciona_firebase"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:background="@drawable/botao1"
-            android:text="@string/btn_cadastro"
+            android:text="@string/botao_cadastro"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 

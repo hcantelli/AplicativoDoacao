@@ -4,11 +4,11 @@
     android:layout_height="match_parent"
     android:weightSum="1"
     android:gravity="center_horizontal"
-    android:background="@mipmap/background"
+    android:background="@mipmap/tela_de_fundo"
     >
 
     <TextView
-        android:id="@+id/nomeUsuario_hp"
+        android:id="@+id/nomeUsuarioExibido"
         android:layout_width="291dp"
         android:layout_height="300dp"
         android:layout_marginTop="25dp"
@@ -19,7 +19,7 @@
         />
 
     <Button
-        android:id="@+id/btn_formulario"
+        android:id="@+id/botao_formulario"
         android:layout_width="338dp"
         android:layout_height="48dp"
         android:layout_marginTop="25dp"
@@ -31,7 +31,7 @@
         />
 
     <Button
-        android:id="@+id/btn_listaAnimais"
+        android:id="@+id/botao_listaAnimais"
         android:layout_width="338dp"
         android:layout_height="48dp"
         android:layout_marginTop="25dp"

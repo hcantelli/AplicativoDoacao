@@ -27,12 +27,12 @@ import java.util.HashMap;
 
 public class Cadastro extends AppCompatActivity{
 
-    private Button mFirebaseButton;
-    private DatabaseReference mDatabase;
-    private EditText view_nomeUsuario, view_email, view_dataDeNascimento, view_telefone, view_endereco, view_cep, view_cpf, view_password;
-    private TextInputLayout inputLayoutNomeUsuario, inputLayoutEmail, inputLayoutDataDeNascimento, inputLayoutTelefone, inputLayoutEndereco, inputLayoutCEP, inputLayoutCPF, inputLayoutPassword;
-    private TextWatcher cpfMask, dataDeNascimentoMask, telefoneMask, cepMask;
-    private FirebaseAuth firebaseAuth;
+    private Button botao_firebase;
+    private DatabaseReference bancoDeDados_firebase;
+    private EditText view_nomeUsuario, view_email, view_dataDeNascimento, view_telefone, view_endereco, view_cep, view_cpf, view_senha;
+    private TextInputLayout inputLayoutNomeUsuario, inputLayoutEmail, inputLayoutDataDeNascimento, inputLayoutTelefone, inputLayoutEndereco, inputLayoutCEP, inputLayoutCPF, inputLayoutSenha;
+    private TextWatcher cpfMascara, dataDeNascimentoMascara, telefoneMascara, cepMascara;
+    private FirebaseAuth autorizacao_firebase;
 
 
 
@@ -44,8 +44,8 @@ public class Cadastro extends AppCompatActivity{
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         final long usuario = bundle.getLong("Usuario");
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        firebaseAuth = FirebaseAuth.getInstance();
+        bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference();
+        autorizacao_firebase = FirebaseAuth.getInstance();
 
         inicializaVariaveis();
 
@@ -55,30 +55,30 @@ public class Cadastro extends AppCompatActivity{
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        mFirebaseButton.setOnClickListener(new View.OnClickListener() {
+        botao_firebase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String senha = view_password.getText().toString().trim();
+                final String senha = view_senha.getText().toString().trim();
                 final String email = view_email.getText().toString().trim();
 
                 if(validaVariaveis()){
                     final ProgressDialog progressDialog = ProgressDialog.show(Cadastro.this, getText(R.string.aguarde), getText(R.string.processando), true);
 
-                    (firebaseAuth.createUserWithEmailAndPassword(email, senha)).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    (autorizacao_firebase.createUserWithEmailAndPassword(email, senha)).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @ Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             progressDialog.dismiss();
                             if (task.isSuccessful()) {
-                                mDatabase.child("Usuarios").child("Usuario" + usuario).setValue(registraUsuario()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                bancoDeDados_firebase.child("Usuarios").child("Usuario" + usuario).setValue(registraUsuario()).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
-                                            (firebaseAuth.signInWithEmailAndPassword(email, senha)).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                            (autorizacao_firebase.signInWithEmailAndPassword(email, senha)).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                                     if(task.isSuccessful()){
                                                         Toast.makeText(Cadastro.this, getText(R.string.cadastro_sucesso), Toast.LENGTH_LONG).show();
-                                                        Intent intent1 = new Intent(Cadastro.this, HomePage.class);
+                                                        Intent intent1 = new Intent(Cadastro.this, TelaUsuario.class);
                                                         startActivity(intent1);
                                                     } else {
                                                         Log.e("ERROR", task.getException().toString());
@@ -103,7 +103,7 @@ public class Cadastro extends AppCompatActivity{
     }
 
      private void inicializaVariaveis(){
-        mFirebaseButton = (Button) findViewById(R.id.addFirebase);
+        botao_firebase = (Button) findViewById(R.id.adiciona_firebase);
 
         inputLayoutNomeUsuario = (TextInputLayout) findViewById(R.id.inputLayoutNomeUsuario);
         inputLayoutEmail = (TextInputLayout) findViewById(R.id.inputLayoutEmail);
@@ -112,7 +112,7 @@ public class Cadastro extends AppCompatActivity{
         inputLayoutEndereco = (TextInputLayout) findViewById(R.id.inputLayoutEndereco);
         inputLayoutCEP = (TextInputLayout) findViewById(R.id.inputLayoutCEP);
         inputLayoutCPF = (TextInputLayout) findViewById(R.id.inputLayoutCPF);
-        inputLayoutPassword = (TextInputLayout) findViewById(R.id.inputLayoutPassword);
+        inputLayoutSenha = (TextInputLayout) findViewById(R.id.inputLayoutSenha);
 
         view_nomeUsuario = (EditText) findViewById(R.id.nomeUsuario);
         view_email = (EditText) findViewById(R.id.email);
@@ -121,23 +121,23 @@ public class Cadastro extends AppCompatActivity{
         view_endereco = (EditText) findViewById(R.id.endereco);
         view_cep = (EditText) findViewById(R.id.cep);
         view_cpf = (EditText) findViewById(R.id.cpf);
-        view_password = (EditText) findViewById(R.id.password);
+        view_senha = (EditText) findViewById(R.id.senha);
 
         view_nomeUsuario.requestFocus();
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(view_nomeUsuario, InputMethodManager.SHOW_IMPLICIT);
 
-        cpfMask = Mask.insert("###.###.###-##", view_cpf);
-        view_cpf.addTextChangedListener(cpfMask);
+        cpfMascara = Mascara.insert("###.###.###-##", view_cpf);
+        view_cpf.addTextChangedListener(cpfMascara);
 
-        dataDeNascimentoMask = Mask.insert("##/##/####", view_dataDeNascimento);
-        view_dataDeNascimento.addTextChangedListener(dataDeNascimentoMask);
+        dataDeNascimentoMascara = Mascara.insert("##/##/####", view_dataDeNascimento);
+        view_dataDeNascimento.addTextChangedListener(dataDeNascimentoMascara);
 
-        telefoneMask = Mask.insert("(##)#####-####", view_telefone);
-        view_telefone.addTextChangedListener(telefoneMask);
+        telefoneMascara = Mascara.insert("(##)#####-####", view_telefone);
+        view_telefone.addTextChangedListener(telefoneMascara);
 
-        cepMask = Mask.insert("#####-###", view_cep);
-        view_cep.addTextChangedListener(cepMask);
+        cepMascara = Mascara.insert("#####-###", view_cep);
+        view_cep.addTextChangedListener(cepMascara);
 
     }
 
@@ -150,7 +150,7 @@ public class Cadastro extends AppCompatActivity{
         String cep = view_cep.getText().toString().trim();
         String cpf = view_cpf.getText().toString().trim();
 
-        final HashMap<String, String> usuarioMap = new HashMap<String, String>();
+        final HashMap<String, String> usuarioMap = new HashMap<>();
 
         usuarioMap.put("nomeUsuario", nomeUsuario);
         usuarioMap.put("email", email);
@@ -191,7 +191,7 @@ public class Cadastro extends AppCompatActivity{
             inputLayoutDataDeNascimento.setError(getText(R.string.obrigatorio));
             isValid = false;
         } else if (view_dataDeNascimento.getText().toString().length() < 10){
-            inputLayoutDataDeNascimento.setError(getText(R.string.dobinvalid));
+            inputLayoutDataDeNascimento.setError(getText(R.string.dataDeNascimentoInvalida));
             isValid = false;
         } else {
             inputLayoutDataDeNascimento.setErrorEnabled(false);
@@ -201,7 +201,7 @@ public class Cadastro extends AppCompatActivity{
             inputLayoutTelefone.setError(getText(R.string.obrigatorio));
             isValid = false;
         } else if (view_telefone.getText().toString().length() < 14) {
-            inputLayoutTelefone.setError(getText(R.string.telefoneinvalid));
+            inputLayoutTelefone.setError(getText(R.string.telefoneInvalido));
             isValid = false;
         } else {
             inputLayoutTelefone.setErrorEnabled(false);
@@ -218,7 +218,7 @@ public class Cadastro extends AppCompatActivity{
             inputLayoutCEP.setError(getText(R.string.obrigatorio));
             isValid = false;
         } else if (view_cep.getText().toString().length() < 9) {
-            inputLayoutCEP.setError(getText(R.string.cepinvalid));
+            inputLayoutCEP.setError(getText(R.string.cepInvalido));
             isValid = false;
         } else {
             inputLayoutCEP.setErrorEnabled(false);
@@ -228,20 +228,20 @@ public class Cadastro extends AppCompatActivity{
             inputLayoutCPF.setError(getText(R.string.obrigatorio));
             isValid = false;
         } else if (view_cpf.getText().toString().length() < 14) {
-            inputLayoutCPF.setError(getText(R.string.cpfinvalid));
+            inputLayoutCPF.setError(getText(R.string.cpfInvalido));
             isValid = false;
         } else {
             inputLayoutCPF.setErrorEnabled(false);
         }
 
-        if(view_password.getText().toString().isEmpty()){
-            inputLayoutPassword.setError(getText(R.string.obrigatorio));
+        if(view_senha.getText().toString().isEmpty()){
+            inputLayoutSenha.setError(getText(R.string.obrigatorio));
             isValid = false;
-        } else if (view_password.getText().toString().length() < 8) {
-            inputLayoutPassword.setError(getText(R.string.passwordinvalid));
+        } else if (view_senha.getText().toString().length() < 8) {
+            inputLayoutSenha.setError(getText(R.string.senhaInvalida));
             isValid = false;
         } else {
-            inputLayoutPassword.setErrorEnabled(false);
+            inputLayoutSenha.setErrorEnabled(false);
         }
 
 

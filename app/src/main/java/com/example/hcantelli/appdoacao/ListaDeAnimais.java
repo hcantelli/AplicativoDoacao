@@ -18,9 +18,9 @@ import java.util.ArrayList;
 
 public class ListaDeAnimais extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
-    private DatabaseReference mDatabase;
+    private DatabaseReference bancoDeDados_firebase;
     private ListView listaDeAnimais;
-    private ArrayList<String> listaDeAnimais_array = new ArrayList<>();
+    private ArrayList<String> listaDeAnimais_vetor = new ArrayList<>();
 
     @Override
     public void onBackPressed() {
@@ -30,20 +30,20 @@ public class ListaDeAnimais extends AppCompatActivity implements AdapterView.OnI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listadeanimais);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Animais").child("Animal1").child("Caracteristicas").child("nomeAnimal");
+        bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference().child("Animais").child("Animal1").child("Caracteristicas").child("nomeAnimal");
         listaDeAnimais = (ListView) findViewById(R.id.listaDeAnimais);
 
 
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listaDeAnimais_array);
+        final ArrayAdapter<String> vetorAdaptado = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaDeAnimais_vetor);
 
-        listaDeAnimais.setAdapter(arrayAdapter);
+        listaDeAnimais.setAdapter(vetorAdaptado);
 //Arrumar lista
-        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+        bancoDeDados_firebase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String nomeAnimal = dataSnapshot.getValue().toString().trim();
-                listaDeAnimais_array.add(nomeAnimal);
-                arrayAdapter.notifyDataSetChanged();
+                listaDeAnimais_vetor.add(nomeAnimal);
+                vetorAdaptado.notifyDataSetChanged();
             }
 
             @Override

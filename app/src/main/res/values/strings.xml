@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AppDoacao</string>
+    <string name="nomeApp">AppDoacao</string>
     <string name="cadastro">Cadastro</string>
     <string name="login">LogIn</string>
     <string name="aguarde">Por favor, aguarde&#8230;</string>
@@ -10,20 +10,20 @@
     <string name="cadastro_erro">Ops&#8230; Ocorreu algum erro no Cadastro. Tente novamente.</string>
     <string name="obrigatorio">Campo obrigatório</string>
     <string name="cep">CEP</string>
-    <string name="password">Senha</string>
+    <string name="senha">Senha</string>
     <string name="email">Email</string>
     <string name="cpf">CPF</string>
-    <string name="btn_cadastro">Finalizar Cadastro</string>
+    <string name="botao_cadastro">Finalizar Cadastro</string>
     <string name="nomeUsuario">Nome Completo</string>
     <string name="telefone">Telefone</string>
     <string name="dataDeNascimento">Data de Nascimento</string>
     <string name="endereco">Endereço</string>
-    <string name="homepage">Página Inicial</string>
-    <string name="dobinvalid">Data de Nascimento inválida</string>
-    <string name="telefoneinvalid">Telefone inválido</string>
-    <string name="cepinvalid">CEP inválido</string>
-    <string name="cpfinvalid">CPF inválido</string>
-    <string name="passwordinvalid">Senha com no mínimo 8 caracteres</string>
+    <string name="paginaInicial">Página Inicial</string>
+    <string name="dataDeNascimentoInvalida">Data de Nascimento inválida</string>
+    <string name="telefoneInvalido">Telefone inválido</string>
+    <string name="cepInvalido">CEP inválido</string>
+    <string name="cpfInvalido">CPF inválido</string>
+    <string name="senhaInvalida">Senha com no mínimo 8 caracteres</string>
     <string name="bemvindo">Bem vindo(a): </string>
     <string name="selecionar">Selecione o que deseja realizar</string>
     <string name="formulario">Formulário</string>
@@ -40,7 +40,7 @@
     <string name="textoRadioButton8">Assistir televisão</string>
     <string name="textoRadioButton9">Viajar</string>
     <string name="textoRadioButton10">Receber visitas</string>
-    <string name="btn_form1">Próxima etapa</string>
+    <string name="botao_form1">Próxima etapa</string>
     <string name="pergunta3">Quantas pessoas moram contigo?</string>
     <string name="textoRadioButton11">0 – Moro sozinho (a)</string>
     <string name="textoRadioButton12">1</string>
@@ -53,7 +53,7 @@
     <string name="textoRadioButton18">Depressivo (a)</string>
     <string name="textoRadioButton19">Organizado (a)</string>
     <string name="textoRadioButton20">Distraído (a)</string>
-    <string name="btn_form2">Próxima etapa</string>
+    <string name="botao_form2">Próxima etapa</string>
     <string name="pergunta5">Quantos menores de 12 anos vivem em sua moradia?</string>
     <string name="textoRadioButton21">0</string>
     <string name="textoRadioButton22">1</string>
@@ -66,7 +66,7 @@
     <string name="textoRadioButton28">2</string>
     <string name="textoRadioButton29">3</string>
     <string name="textoRadioButton30">4 ou mais</string>
-    <string name="btn_form3">Próxima etapa</string>
+    <string name="botao_form3">Próxima etapa</string>
     <string name="pergunta7">Dentre as opções a seguir, como você caracteriza a sua moradia?</string>
     <string name="textoRadioButton31">Apartamento sem varanda</string>
     <string name="textoRadioButton32">Apartamento com varanda</string>
@@ -79,10 +79,9 @@
     <string name="textoRadioButton38">81 a 130m²</string>
     <string name="textoRadioButton39">131 a 181m²</string>
     <string name="textoRadioButton40">Acima de 181m²</string>
-    <string name="btn_form4">Finalizar</string>
-    <string name="telaanimal">Tela Animal</string>
-    <string name="title_activity_localizacao_ong">Map</string>
-    <string name="paginasucesso">Obrigado pela Adoção</string>
+    <string name="botao_form4">Finalizar</string>
+    <string name="telaAnimal">Tela Animal</string>
+    <string name="localizacaoOng">Map</string>
     <string name="realizar_formulario">Realizar Formulário</string>
     <string name="verificar_lista">Verificar Lista de Animais</string>
     <string name="logo">Logo</string>

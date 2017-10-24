@@ -4,14 +4,14 @@
         android:state_pressed="true">
         <shape>
             <solid
-                android:color="@color/colorPrimaryDarkPressed"></solid>
+                android:color="@color/corPrimariaEscuraClicada"/>
         </shape>
     </item>
 
     <item>
         <shape>
             <solid
-                android:color="@color/colorPrimaryDark"></solid>
+                android:color="@color/corPrimariaEscura"/>
         </shape>
     </item>
 
