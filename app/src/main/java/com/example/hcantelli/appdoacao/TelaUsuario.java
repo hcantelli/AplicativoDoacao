@@ -1,11 +1,17 @@
 package com.example.hcantelli.appdoacao;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,6 +30,33 @@ public class TelaUsuario extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        new AlertDialog.Builder(this)
+                .setTitle("Desconectar")
+                .setMessage("Você tem certeza que gostaria de sair?")
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        FirebaseAuth.getInstance().signOut();
+                        Toast.makeText(TelaUsuario.this, getText(R.string.desconectado), Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(TelaUsuario.this, TelaInicial.class);
+                        startActivity(intent);
+                    }
+                })
+                .setNegativeButton("Não", null)
+                .show();
+        return true;
     }
 
     protected void onCreate(Bundle savedInstanceState){

@@ -4,8 +4,8 @@
     <string name="login">LogIn</string>
     <string name="aguarde">Por favor, aguarde&#8230;</string>
     <string name="processando">Processando&#8230;</string>
-    <string name="login_sucesso">LogIn feito com Sucesso!</string>
-    <string name="cadastro_sucesso">Cadastro feito com Sucesso!</string>
+    <string name="login_sucesso">Login feito com sucesso!</string>
+    <string name="cadastro_sucesso">Cadastro feito com sucesso!</string>
     <string name="login_erro">Login inválido. Tente novamente.</string>
     <string name="cadastro_erro">Ops&#8230; Ocorreu algum erro no Cadastro. Tente novamente.</string>
     <string name="obrigatorio">Campo obrigatório</string>
@@ -85,5 +85,7 @@
     <string name="realizar_formulario">Realizar Formulário</string>
     <string name="verificar_lista">Verificar Lista de Animais</string>
     <string name="logo">Logo</string>
-    <string name="formulario_erro">Por favor, verifique se selecionou alguma resposta</string>
+    <string name="formulario_erro">Por favor, verifique se selecionou alguma resposta.</string>
+    <string name="logout">Logout</string>
+    <string name="desconectado">Você foi desconectado com sucesso!</string>
 </resources>

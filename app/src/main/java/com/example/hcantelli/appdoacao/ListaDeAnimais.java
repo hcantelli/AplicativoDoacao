@@ -24,6 +24,9 @@ public class ListaDeAnimais extends AppCompatActivity implements AdapterView.OnI
 
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(ListaDeAnimais.this, TelaUsuario.class));
+        finish();
     }
 
     protected void onCreate(Bundle savedInstanceState){
