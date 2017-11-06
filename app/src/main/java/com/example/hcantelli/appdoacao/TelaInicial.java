@@ -18,6 +18,12 @@ public class TelaInicial extends AppCompatActivity {
     private Button botao_cadastro;
     private DatabaseReference bancoDeDados_firebase;
 
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,27 +34,11 @@ public class TelaInicial extends AppCompatActivity {
         bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference();
 
         botao_cadastro.setOnClickListener(new View.OnClickListener() {
-
+            @Override
             public void onClick(View v) {
-
-                bancoDeDados_firebase.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        Intent intent = new Intent("com.example.hcantelli.appdoacao.Cadastro");
-                        long count = dataSnapshot.child("Usuarios").getChildrenCount() + 1;
-                        intent.putExtra(("Usuario"), count);
-                        startActivity(intent);
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-
-
+                Intent intent = new Intent("com.example.hcantelli.appdoacao.Cadastro");
+                startActivity(intent);
             }
-
         });
 
         botao_login.setOnClickListener(new View.OnClickListener() {

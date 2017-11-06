@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -30,7 +31,7 @@ public class Formulario1 extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        final long usuario = bundle.getLong("Usuarios");
+        final String idUsuario = bundle.getString("Usuarios");
 
 
         grupoPergunta1 = (RadioGroup) findViewById(R.id.grupoPergunta1);
@@ -40,22 +41,20 @@ public class Formulario1 extends AppCompatActivity {
         botao_formulario1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-//                RadioGroup g = grupoPergunta1;
-//                int selected = g.getCheckedRadioButtonId();
-//                RadioButton b = (RadioButton) findViewById(selected);
-//                b.getText();
-
-
-                bancoDeDados_firebase.child("Formulario").child("Usuario" + usuario).child("pergunta1").setValue(botao_radio1.getText().toString().trim());
-                bancoDeDados_firebase.child("Formulario").child("Usuario" + usuario).child("pergunta2").setValue(botao_radio2.getText().toString().trim());
-                Intent intent2 = new Intent(Formulario1.this, Formulario2.class);
-                intent2.putExtra(("Usuarios"),usuario);
-                startActivity(intent2);
-
+                if (grupoPergunta1.getCheckedRadioButtonId() == -1 || grupoPergunta2.getCheckedRadioButtonId() == -1)
+                {
+                    Toast.makeText(Formulario1.this, getText(R.string.formulario_erro), Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    bancoDeDados_firebase.child("Formulario").child(idUsuario).child("pergunta1").setValue(botao_radio1.getText().toString().trim());
+                    bancoDeDados_firebase.child("Formulario").child(idUsuario).child("pergunta2").setValue(botao_radio2.getText().toString().trim());
+                    Intent intent2 = new Intent(Formulario1.this, Formulario2.class);
+                    intent2.putExtra(("Usuarios"),idUsuario);
+                    startActivity(intent2);
+                }
             }
         });
-
     }
 
 

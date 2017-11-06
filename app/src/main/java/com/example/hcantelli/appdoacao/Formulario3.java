@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -30,7 +31,7 @@ public class Formulario3 extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        final long usuario = bundle.getLong("Usuarios");
+        final String idUsuario = bundle.getString("Usuarios");
 
 
         grupoPergunta5 = (RadioGroup) findViewById(R.id.grupoPergunta5);
@@ -40,13 +41,18 @@ public class Formulario3 extends AppCompatActivity {
         botao_formulario3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                bancoDeDados_firebase.child("Formulario").child("Usuario" + usuario).child("pergunta5").setValue(botao_radio5.getText().toString().trim());
-                bancoDeDados_firebase.child("Formulario").child("Usuario" + usuario).child("pergunta6").setValue(botao_radio6.getText().toString().trim());
-                Intent intent2 = new Intent(Formulario3.this, Formulario4.class);
-                intent2.putExtra(("Usuarios"),usuario);
-                startActivity(intent2);
-
+                if (grupoPergunta5.getCheckedRadioButtonId() == -1 || grupoPergunta6.getCheckedRadioButtonId() == -1)
+                {
+                    Toast.makeText(Formulario3.this, getText(R.string.formulario_erro), Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    bancoDeDados_firebase.child("Formulario").child(idUsuario).child("pergunta5").setValue(botao_radio5.getText().toString().trim());
+                    bancoDeDados_firebase.child("Formulario").child(idUsuario).child("pergunta6").setValue(botao_radio6.getText().toString().trim());
+                    Intent intent2 = new Intent(Formulario3.this, Formulario4.class);
+                    intent2.putExtra(("Usuarios"), idUsuario);
+                    startActivity(intent2);
+                }
             }
         });
 
