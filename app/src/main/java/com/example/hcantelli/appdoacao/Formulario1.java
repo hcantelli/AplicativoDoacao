@@ -31,7 +31,7 @@ public class Formulario1 extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        final long usuario = bundle.getLong("Usuarios");
+        final String idUsuario = bundle.getString("Usuarios");
 
 
         grupoPergunta1 = (RadioGroup) findViewById(R.id.grupoPergunta1);
@@ -47,10 +47,10 @@ public class Formulario1 extends AppCompatActivity {
                 }
                 else
                 {
-                    bancoDeDados_firebase.child("Formulario").child("Usuario" + usuario).child("pergunta1").setValue(botao_radio1.getText().toString().trim());
-                    bancoDeDados_firebase.child("Formulario").child("Usuario" + usuario).child("pergunta2").setValue(botao_radio2.getText().toString().trim());
+                    bancoDeDados_firebase.child("Formulario").child(idUsuario).child("pergunta1").setValue(botao_radio1.getText().toString().trim());
+                    bancoDeDados_firebase.child("Formulario").child(idUsuario).child("pergunta2").setValue(botao_radio2.getText().toString().trim());
                     Intent intent2 = new Intent(Formulario1.this, Formulario2.class);
-                    intent2.putExtra(("Usuarios"),usuario);
+                    intent2.putExtra(("Usuarios"),idUsuario);
                     startActivity(intent2);
                 }
             }

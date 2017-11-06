@@ -21,12 +21,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class TelaUsuario extends AppCompatActivity {
 
     private TextView nome_exibido;
     private DatabaseReference bancoDeDados_firebase;
     private Button botao_listaAnimais, botao_formulario;
-    private long contador;
 
     @Override
     public void onBackPressed() {
@@ -64,38 +65,40 @@ public class TelaUsuario extends AppCompatActivity {
         setContentView(R.layout.tela_usuario);
 
         final FirebaseUser usuarioLogado = FirebaseAuth.getInstance().getCurrentUser();
+        final String[] idUsuario = new String[1];
 
         bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference();
         nome_exibido = (TextView) findViewById(R.id.nomeUsuarioExibido);
         botao_listaAnimais = (Button) findViewById(R.id.botao_listaAnimais);
         botao_formulario = (Button) findViewById(R.id.botao_formulario);
 
-        bancoDeDados_firebase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String usuarioNome = null;
-                long count;
-
-                for (count = 1; count <= dataSnapshot.child("Usuarios").getChildrenCount(); count++){
-                    if(usuarioLogado.getEmail().equals(dataSnapshot.child("Usuarios").child("Usuario" + count).child("email").getValue().toString())){
-                        usuarioNome = dataSnapshot.child("Usuarios").child("Usuario" + count).child("nomeUsuario").getValue().toString();
+        bancoDeDados_firebase.child("Usuarios")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        ArrayList<String> ListaDeIdsUsuarios = new ArrayList<>();
+                        String usuarioNome = null;
+                        int count;
+                        for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                            ListaDeIdsUsuarios.add(String.valueOf(ds.getKey()));
+                        }
+                        for (count = 0; count < ListaDeIdsUsuarios.size(); count++){
+                            if(usuarioLogado.getEmail().equals(dataSnapshot.child(ListaDeIdsUsuarios.get(count)).child("email").getValue().toString())){
+                            usuarioNome = dataSnapshot.child(String.valueOf(ListaDeIdsUsuarios.get(count))).child("nomeUsuario").getValue().toString();
+                            break;
+                            }
+                        }
+                        nome_exibido.setText(getText(R.string.bemvindo) + "\n" + usuarioNome + "\n\n" + getText(R.string.selecionar));
+                        idUsuario[0] = ListaDeIdsUsuarios.get(count);
                     }
-                }
-                nome_exibido.setText(getText(R.string.bemvindo) + "\n" + usuarioNome + "\n\n" + getText(R.string.selecionar));
-                contador = count--;
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {}
+                });
 
         botao_formulario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TelaUsuario.this, Formulario1.class);
-                intent.putExtra(("Usuarios"), contador);
+                intent.putExtra(("Usuarios"), String.valueOf(idUsuario[0]));
                 startActivity(intent);
             }
         });
@@ -107,13 +110,5 @@ public class TelaUsuario extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
-
-
     }
-
-
-
 }

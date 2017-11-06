@@ -41,9 +41,6 @@ public class Cadastro extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cadastro);
 
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        final long usuario = bundle.getLong("Usuario");
         bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference();
         autorizacao_firebase = FirebaseAuth.getInstance();
 
@@ -67,19 +64,19 @@ public class Cadastro extends AppCompatActivity{
                     (autorizacao_firebase.createUserWithEmailAndPassword(email, senha)).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @ Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            progressDialog.dismiss();
                             if (task.isSuccessful()) {
                                 (autorizacao_firebase.signInWithEmailAndPassword(email, senha)).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if(task.isSuccessful()){
-                                            bancoDeDados_firebase.child("Usuarios").child("Usuario" + usuario).setValue(registraUsuario()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            bancoDeDados_firebase.child("Usuarios").push().setValue(registraUsuario()).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if (task.isSuccessful()) {
+                                                        progressDialog.dismiss();
                                                         Toast.makeText(Cadastro.this, getText(R.string.cadastro_sucesso), Toast.LENGTH_LONG).show();
-                                                        Intent intent1 = new Intent(Cadastro.this, TelaUsuario.class);
-                                                        startActivity(intent1);
+                                                        Intent intent = new Intent(Cadastro.this, TelaUsuario.class);
+                                                        startActivity(intent);
                                                     } else {
                                                         Toast.makeText(Cadastro.this, getText(R.string.cadastro_erro), Toast.LENGTH_LONG).show();
                                                     }
@@ -93,7 +90,11 @@ public class Cadastro extends AppCompatActivity{
                                 });
                             } else {
                                 Log.e("ERROR", task.getException().toString());
-                                Toast.makeText(Cadastro.this, getText(R.string.cadastro_erro), Toast.LENGTH_LONG).show();
+                                if(task.getException().toString().equals(getText(R.string.erro_email))){
+                                    Toast.makeText(Cadastro.this, getText(R.string.email_utilizado), Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(Cadastro.this, getText(R.string.cadastro_erro), Toast.LENGTH_LONG).show();
+                                }
                             }
                         }
                     });

@@ -88,4 +88,6 @@
     <string name="formulario_erro">Por favor, verifique se selecionou alguma resposta.</string>
     <string name="logout">Logout</string>
     <string name="desconectado">Você foi desconectado com sucesso!</string>
+    <string name="email_utilizado">Email já utilizado. Por favor, selecione outro email.</string>
+    <string name="erro_email">com.google.firebase.auth.FirebaseAuthUserCollisionException: The email address is already in use by another account.</string>
 </resources>
