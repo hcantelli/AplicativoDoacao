@@ -47,8 +47,8 @@ public class Formulario3 extends AppCompatActivity {
                 }
                 else
                 {
-                    bancoDeDados_firebase.child("Formulario").child(idUsuario).child("pergunta5").setValue(botao_radio5.getText().toString().trim());
-                    bancoDeDados_firebase.child("Formulario").child(idUsuario).child("pergunta6").setValue(botao_radio6.getText().toString().trim());
+                    bancoDeDados_firebase.child("Formulario").child(idUsuario).child("pergunta5").setValue(respostaBotao5());
+                    bancoDeDados_firebase.child("Formulario").child(idUsuario).child("pergunta6").setValue(respostaBotao6());
                     Intent intent2 = new Intent(Formulario3.this, Formulario4.class);
                     intent2.putExtra(("Usuarios"), idUsuario);
                     startActivity(intent2);
@@ -66,6 +66,36 @@ public class Formulario3 extends AppCompatActivity {
     public void grupoPergunta6Click (View v){
         int radioButtonId6 = grupoPergunta6.getCheckedRadioButtonId();
         botao_radio6 = (RadioButton) findViewById(radioButtonId6);
+    }
+    public int respostaBotao5(){
+        int respostaBotao5 = 0;
+        if (botao_radio5.getText().toString().trim().equals(getText(R.string.textoRadioButton21))){
+            respostaBotao5 = 1;
+        } else if(botao_radio5.getText().toString().trim().equals(getText(R.string.textoRadioButton22))){
+            respostaBotao5 = 2;
+        } else if(botao_radio5.getText().toString().trim().equals(getText(R.string.textoRadioButton23))){
+            respostaBotao5 = 3;
+        } else if(botao_radio5.getText().toString().trim().equals(getText(R.string.textoRadioButton24))){
+            respostaBotao5 = 4;
+        } else if(botao_radio5.getText().toString().trim().equals(getText(R.string.textoRadioButton25))){
+            respostaBotao5 = 5;
+        }
+        return respostaBotao5;
+    }
+    public int respostaBotao6(){
+        int respostaBotao6 = 0;
+        if (botao_radio6.getText().toString().trim().equals(getText(R.string.textoRadioButton26))){
+            respostaBotao6 = 1;
+        } else if(botao_radio6.getText().toString().trim().equals(getText(R.string.textoRadioButton27))){
+            respostaBotao6 = 2;
+        } else if(botao_radio6.getText().toString().trim().equals(getText(R.string.textoRadioButton28))){
+            respostaBotao6 = 3;
+        } else if(botao_radio6.getText().toString().trim().equals(getText(R.string.textoRadioButton29))){
+            respostaBotao6 = 4;
+        } else if(botao_radio6.getText().toString().trim().equals(getText(R.string.textoRadioButton30))){
+            respostaBotao6 = 5;
+        }
+        return respostaBotao6;
     }
 
 
