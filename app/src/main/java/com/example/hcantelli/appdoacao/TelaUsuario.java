@@ -106,7 +106,8 @@ public class TelaUsuario extends AppCompatActivity {
         botao_listaAnimais.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TelaUsuario.this, ListaDeAnimais.class);
+                Intent intent = new Intent(TelaUsuario.this, Compatibilidade.class);
+                intent.putExtra(("Usuarios"), String.valueOf(idUsuario[0]));
                 startActivity(intent);
             }
         });

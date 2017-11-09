@@ -8,53 +8,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:188545617806:android:cf152fac33d56d47",
-        "android_client_info": {
-          "package_name": "com.example.helio.appdoacao"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "188545617806-go2bdani94qab3b0hni36dnjf737eia3.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.helio.appdoacao",
-            "certificate_hash": "039740b3c19f0187b65ab1571e039c8efed1a936"
-          }
-        },
-        {
-          "client_id": "188545617806-akrsmm4kqg7846i42n3on2h3com7r5uq.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyA7zBfGJo6d1a5BrhQl5txLKubJHkcUUik"
-        },
-        {
-          "current_key": "AIzaSyDF0iwNL7lmtpXlrwcFA9Ja2m7HU7NKVqI"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "188545617806-akrsmm4kqg7846i42n3on2h3com7r5uq.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:188545617806:android:e66ce9bc68e94b49",
         "android_client_info": {
           "package_name": "com.example.hcantelli.appdoacao"
