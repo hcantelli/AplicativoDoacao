@@ -1,8 +1,10 @@
 package com.example.hcantelli.appdoacao;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
@@ -31,6 +33,9 @@ public class Compatibilidade extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         final String idUsuario = bundle.getString("Usuarios");
 
+        final ProgressDialog progressDialog = ProgressDialog.show(Compatibilidade.this, getText(R.string.aguarde), getText(R.string.calculo_compatibilidade), true);
+        progressDialog.show();
+
         bancoDeDados_firebase
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -52,13 +57,22 @@ public class Compatibilidade extends AppCompatActivity {
                                                             for (DataSnapshot ds : dataSnapshot.getChildren()) {
                                                                 caracteristicasAnimal.add((Double) ds.getValue());
                                                             }
-                                                            Log.e("ERROR", caracteristicasAdotante.toString());
-                                                            Log.e("ERROR", caracteristicasAnimal.toString());
                                                             for (int count2 = 0; count2 < 10; count2++){
                                                                 compatibilidade[0] += Math.pow(caracteristicasAdotante.get(count2) - caracteristicasAnimal.get(count2), 2);
                                                             }
                                                             compatibilidadePorAnimal.add(Math.sqrt(compatibilidade[0]));
                                                             idAnimal.add(count[0]);
+                                                            Handler handler = new Handler();
+                                                            handler.postDelayed(new Runnable() {
+                                                                public void run() {
+                                                                    progressDialog.dismiss();
+                                                                    Intent intent = new Intent(Compatibilidade.this, ListaDeAnimais.class);
+                                                                    intent.putExtra(("CompatibilidadeAnimal"), compatibilidadePorAnimal);
+                                                                    intent.putExtra(("idAnimal"), idAnimal);
+                                                                    startActivity(intent);
+                                                                }
+                                                            }, 5000);
+
                                                         }
                                                         @Override
                                                         public void onCancelled(DatabaseError databaseError) {
@@ -69,7 +83,6 @@ public class Compatibilidade extends AppCompatActivity {
                                         public void onCancelled(DatabaseError databaseError) {
                                         }
                                     });
-
                         }
                     }
                     @Override

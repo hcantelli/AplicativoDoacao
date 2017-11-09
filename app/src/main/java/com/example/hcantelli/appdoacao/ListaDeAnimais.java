@@ -3,6 +3,7 @@ package com.example.hcantelli.appdoacao;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -35,6 +36,14 @@ public class ListaDeAnimais extends AppCompatActivity implements AdapterView.OnI
 
         bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference().child("Animais").child("Animal1").child("Caracteristicas").child("nomeAnimal");
         listaDeAnimais = (ListView) findViewById(R.id.listaDeAnimais);
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        double[] compatibilidadePorAnimal = bundle.getDoubleArray("CompatibilidadeAnimal");
+        int[] idAnimal = bundle.getIntArray("idAnimal");
+
+        Log.e("ERROR", String.valueOf(compatibilidadePorAnimal));
+        Log.e("ERROR", String.valueOf(idAnimal));
 
 
         final ArrayAdapter<String> vetorAdaptado = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaDeAnimais_vetor);

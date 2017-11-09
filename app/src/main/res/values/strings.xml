@@ -90,4 +90,5 @@
     <string name="desconectado">Você foi desconectado com sucesso!</string>
     <string name="email_utilizado">Email já utilizado. Por favor, selecione outro email.</string>
     <string name="erro_email">com.google.firebase.auth.FirebaseAuthUserCollisionException: The email address is already in use by another account.</string>
+    <string name="calculo_compatibilidade">Estamos selecionando os melhores animais para você!</string>
 </resources>
