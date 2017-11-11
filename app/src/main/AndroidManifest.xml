@@ -107,5 +107,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Compatibilidade"
+            android:label="@string/nomeApp"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.example.hcantelli.appdoacao.Compatibilidade" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 </manifest>
