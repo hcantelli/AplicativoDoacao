@@ -15,6 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ListaDeAnimais extends AppCompatActivity implements AdapterView.OnItemClickListener {
@@ -38,9 +39,8 @@ public class ListaDeAnimais extends AppCompatActivity implements AdapterView.OnI
         listaDeAnimais = (ListView) findViewById(R.id.listaDeAnimais);
 
         Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        double[] compatibilidadePorAnimal = bundle.getDoubleArray("CompatibilidadeAnimal");
-        int[] idAnimal = bundle.getIntArray("idAnimal");
+        ArrayList<Double> compatibilidadePorAnimal = (ArrayList<Double>) intent.getSerializableExtra("CompatibilidadeAnimal");
+        ArrayList<Integer> idAnimal = intent.getIntegerArrayListExtra("idAnimal");
 
         Log.e("ERROR", String.valueOf(compatibilidadePorAnimal));
         Log.e("ERROR", String.valueOf(idAnimal));
