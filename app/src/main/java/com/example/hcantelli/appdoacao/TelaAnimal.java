@@ -1,10 +1,12 @@
 package com.example.hcantelli.appdoacao;
 
 import android.content.Context;
+import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -20,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
@@ -34,7 +37,11 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_animal);
 
-        bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference().child("Animais").child("Animal1");
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        final int idAnimal = bundle.getInt("idAnimal");
+
+        bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference().child("Animais").child("Animal" + idAnimal);
 
         inicializaVariaveis();
 
@@ -81,13 +88,11 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
         Geocoder coder = new Geocoder(context);
         List<Address> endereco;
         LatLng p1 = null;
-
         try {
             endereco = coder.getFromLocationName(strAddress, 5);
             if (endereco == null) {
                 return null;
             }
-            //erro nessa linha
             Address localizacao = endereco.get(0);
             localizacao.getLatitude();
             localizacao.getLongitude();
@@ -105,9 +110,24 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mapa_google = googleMap;
-        //erro pode estar relacionado a esta linha
-        LatLng ong = pegaLocalizacaoPeloEndereco(TelaAnimal.this,enderecoOng.getText().toString());
-        mapa_google.addMarker(new MarkerOptions().position(ong).title("ONG " + nomeOng.getText().toString()));
-        mapa_google.moveCamera(CameraUpdateFactory.newLatLngZoom(ong , 15.0f));
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        int idAnimal = bundle.getInt("idAnimal");
+        bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference().child("Animais").child("Animal" + idAnimal);
+
+        bancoDeDados_firebase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                LatLng ong = pegaLocalizacaoPeloEndereco(TelaAnimal.this, dataSnapshot.child("ONG").child("endereco").getValue().toString());
+                mapa_google.addMarker(new MarkerOptions().position(ong).title("ONG " + dataSnapshot.child("ONG").child("nomeOng").getValue().toString()));
+                mapa_google.moveCamera(CameraUpdateFactory.newLatLngZoom(ong , 15.0f));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 }
