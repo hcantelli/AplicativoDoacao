@@ -47,10 +47,9 @@ public class Formulario4 extends AppCompatActivity {
                 }
                 else
                 {
-                    bancoDeDados_firebase.child("Formulario").child(idUsuario).child("pergunta7").setValue(respostaBotao7());
-                    bancoDeDados_firebase.child("Formulario").child(idUsuario).child("pergunta8").setValue(respostaBotao8());
-                    Intent intent2 = new Intent(Formulario4.this, Compatibilidade.class);
-                    intent2.putExtra(("Usuarios"), idUsuario);
+                    bancoDeDados_firebase.child("Formulario").child(idUsuario).child("pergunta7").setValue(botao_radio7.getText().toString().trim());
+                    bancoDeDados_firebase.child("Formulario").child(idUsuario).child("pergunta8").setValue(botao_radio8.getText().toString().trim());
+                    Intent intent2 = new Intent(Formulario4.this, ListaDeAnimais.class);
                     startActivity(intent2);
                 }
             }
@@ -66,36 +65,6 @@ public class Formulario4 extends AppCompatActivity {
     public void grupoPergunta8Click (View v){
         int radioButtonId8 = grupoPergunta8.getCheckedRadioButtonId();
         botao_radio8 = (RadioButton) findViewById(radioButtonId8);
-    }
-    public int respostaBotao7(){
-        int respostaBotao7 = 0;
-        if (botao_radio7.getText().toString().trim().equals(getText(R.string.textoRadioButton31))){
-            respostaBotao7 = 1;
-        } else if(botao_radio7.getText().toString().trim().equals(getText(R.string.textoRadioButton32))){
-            respostaBotao7 = 2;
-        } else if(botao_radio7.getText().toString().trim().equals(getText(R.string.textoRadioButton33))){
-            respostaBotao7 = 3;
-        } else if(botao_radio7.getText().toString().trim().equals(getText(R.string.textoRadioButton34))){
-            respostaBotao7 = 4;
-        } else if(botao_radio7.getText().toString().trim().equals(getText(R.string.textoRadioButton35))){
-            respostaBotao7 = 5;
-        }
-        return respostaBotao7;
-    }
-    public int respostaBotao8(){
-        int respostaBotao8 = 0;
-        if (botao_radio8.getText().toString().trim().equals(getText(R.string.textoRadioButton36))){
-            respostaBotao8 = 1;
-        } else if(botao_radio8.getText().toString().trim().equals(getText(R.string.textoRadioButton37))){
-            respostaBotao8 = 2;
-        } else if(botao_radio8.getText().toString().trim().equals(getText(R.string.textoRadioButton38))){
-            respostaBotao8 = 3;
-        } else if(botao_radio8.getText().toString().trim().equals(getText(R.string.textoRadioButton39))){
-            respostaBotao8 = 4;
-        } else if(botao_radio8.getText().toString().trim().equals(getText(R.string.textoRadioButton40))){
-            respostaBotao8 = 5;
-        }
-        return respostaBotao8;
     }
 
 
