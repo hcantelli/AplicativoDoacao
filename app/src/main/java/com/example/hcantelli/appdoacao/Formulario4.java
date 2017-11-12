@@ -49,7 +49,6 @@ public class Formulario4 extends AppCompatActivity {
                 {
                     bancoDeDados_firebase.child("Formulario").child(idUsuario).child("pergunta7").setValue(respostaBotao7());
                     bancoDeDados_firebase.child("Formulario").child(idUsuario).child("pergunta8").setValue(respostaBotao8());
-
                     Intent intent2 = new Intent(Formulario4.this, Compatibilidade.class);
                     intent2.putExtra(("Usuarios"), idUsuario);
                     startActivity(intent2);
