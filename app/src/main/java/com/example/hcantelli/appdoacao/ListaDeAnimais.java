@@ -26,7 +26,7 @@ public class ListaDeAnimais extends AppCompatActivity implements AdapterView.OnI
 
     private DatabaseReference bancoDeDados_firebase;
     private ListView listaDeAnimais;
-    private ArrayList<Integer> vetor_animais_02 = new ArrayList<>();
+    private ArrayList<String> vetor_animais_02 = new ArrayList<>();
     private ArrayList<String> listaDeAnimais_vetor = new ArrayList<>();
 
     @Override
@@ -42,9 +42,9 @@ public class ListaDeAnimais extends AppCompatActivity implements AdapterView.OnI
 
         Intent intent = getIntent();
         ArrayList<Double> compatibilidadePorAnimal = (ArrayList<Double>) intent.getSerializableExtra("CompatibilidadeAnimal");
-        ArrayList<Integer> idAnimal = intent.getIntegerArrayListExtra("idAnimal");
-        final Map<Double, Integer> vetor_animais = new HashMap<>();
-        final ArrayList<Integer> idAnimalOrdenado = new ArrayList<>();
+        ArrayList<String> idAnimal = intent.getStringArrayListExtra("idAnimal");
+        final Map<Double, String> vetor_animais = new HashMap<>();
+        final ArrayList<String> idAnimalOrdenado = new ArrayList<>();
 
         for(int count = 0; count < idAnimal.size();){
             vetor_animais.put(compatibilidadePorAnimal.get(count), idAnimal.get(count));
@@ -68,7 +68,7 @@ public class ListaDeAnimais extends AppCompatActivity implements AdapterView.OnI
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(int count = 0; count < dataSnapshot.child("Animais").getChildrenCount();){
-                    listaDeAnimais_vetor.add((String) dataSnapshot.child("Animais").child("Animal" + idAnimalOrdenado.get(count)).child("Caracteristicas").child("nomeAnimal").getValue());
+                    listaDeAnimais_vetor.add((String) dataSnapshot.child("Animais").child(idAnimalOrdenado.get(count)).child("Caracteristicas").child("nomeAnimal").getValue());
                     count++;
                 }
                 vetorAdaptado.notifyDataSetChanged();
@@ -85,27 +85,8 @@ public class ListaDeAnimais extends AppCompatActivity implements AdapterView.OnI
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        int idAnimal = 0;
-        switch(position){
-            case 0: idAnimal = vetor_animais_02.get(0); break;
-            case 1: idAnimal = vetor_animais_02.get(1); break;
-            case 2: idAnimal = vetor_animais_02.get(2); break;
-            case 3: idAnimal = vetor_animais_02.get(3); break;
-            case 4: idAnimal = vetor_animais_02.get(4); break;
-            case 5: idAnimal = vetor_animais_02.get(5); break;
-            case 6: idAnimal = vetor_animais_02.get(6); break;
-            case 7: idAnimal = vetor_animais_02.get(7); break;
-            case 8: idAnimal = vetor_animais_02.get(8); break;
-            case 9: idAnimal = vetor_animais_02.get(9); break;
-            case 10: idAnimal = vetor_animais_02.get(10); break;
-            case 11: idAnimal = vetor_animais_02.get(11); break;
-            case 12: idAnimal = vetor_animais_02.get(12); break;
-            case 13: idAnimal = vetor_animais_02.get(13); break;
-            case 14: idAnimal = vetor_animais_02.get(14); break;
-            case 15: idAnimal = vetor_animais_02.get(15); break;
-            case 16: idAnimal = vetor_animais_02.get(16); break;
-            case 17: idAnimal = vetor_animais_02.get(17); break;
-        }
+        String idAnimal;
+        idAnimal = vetor_animais_02.get(position);
         Intent intent = new Intent(ListaDeAnimais.this, TelaAnimal.class);
         intent.putExtra("idAnimal", idAnimal);
         startActivity(intent);

@@ -39,9 +39,9 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        final int idAnimal = bundle.getInt("idAnimal");
+        final String idAnimal = bundle.getString("idAnimal");
 
-        bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference().child("Animais").child("Animal" + idAnimal);
+        bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference().child("Animais").child(idAnimal);
 
         inicializaVariaveis();
 
@@ -112,8 +112,8 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
         mapa_google = googleMap;
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        int idAnimal = bundle.getInt("idAnimal");
-        bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference().child("Animais").child("Animal" + idAnimal);
+        String idAnimal = bundle.getString("idAnimal");
+        bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference().child("Animais").child(idAnimal);
 
         bancoDeDados_firebase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

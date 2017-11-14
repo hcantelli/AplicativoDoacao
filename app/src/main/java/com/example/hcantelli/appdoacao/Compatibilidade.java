@@ -26,7 +26,7 @@ public class Compatibilidade extends AppCompatActivity {
 
         final double[] compatibilidade = {0};
         final ArrayList<Double> compatibilidadePorAnimal = new ArrayList<>();
-        final ArrayList<Integer> idAnimal = new ArrayList<>();
+        final ArrayList<String> idAnimal = new ArrayList<>();
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -41,8 +41,7 @@ public class Compatibilidade extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         final ArrayList<Double> caracteristicasAdotante = new ArrayList<>();
                         final ArrayList<Double> caracteristicasAnimal = new ArrayList<>();
-                        for(int count = 1; count <= dataSnapshot.child("Animais").getChildrenCount();) {
-                            final int finalCount = count;
+
                             bancoDeDados_firebase.child("ResultadoIA").child(idUsuario)
                                     .addValueEventListener(new ValueEventListener() {
                                         @Override
@@ -50,36 +49,56 @@ public class Compatibilidade extends AppCompatActivity {
                                             for (DataSnapshot ds : dataSnapshot.getChildren()) {
                                                 caracteristicasAdotante.add((Double) ds.getValue());
                                             }
-                                            bancoDeDados_firebase.child("Animais").child("Animal" + finalCount).child("Personalidade")
-                                                    .addValueEventListener(new ValueEventListener() {
-                                                        @Override
-                                                        public void onDataChange(DataSnapshot dataSnapshot) {
-                                                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                                                                caracteristicasAnimal.add((Double) ds.getValue());
-                                                            }
-                                                            for (int count2 = 0; count2 < 10; count2++){
-                                                                compatibilidade[0] += Math.pow(caracteristicasAdotante.get(count2) - caracteristicasAnimal.get(count2), 2);
-                                                            }
-                                                            compatibilidadePorAnimal.add(Math.sqrt(compatibilidade[0]));
-                                                            idAnimal.add(finalCount);
-                                                            caracteristicasAnimal.clear();
-                                                            compatibilidade[0] = 0;
-                                                            Handler handler = new Handler();
-                                                            handler.postDelayed(new Runnable() {
-                                                                public void run() {
-                                                                    progressDialog.dismiss();
-                                                                    Intent intent = new Intent(Compatibilidade.this, ListaDeAnimais.class);
-                                                                    intent.putExtra(("CompatibilidadeAnimal"), compatibilidadePorAnimal);
-                                                                    intent.putIntegerArrayListExtra(("idAnimal"), idAnimal);
-                                                                    startActivity(intent);
-                                                                }
-                                                            }, 5000);
 
+                                            bancoDeDados_firebase.child("Animais").addValueEventListener(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                                    for (DataSnapshot ds : dataSnapshot.getChildren()){
+                                                        idAnimal.add(String.valueOf(ds.getKey()));
+                                                    }
+
+                                                    for(int count = 0; count < dataSnapshot.getChildrenCount();){
+                                                        final int finalCount = count;
+                                                        bancoDeDados_firebase.child("Animais").child(idAnimal.get(count)).child("Personalidade")
+                                                            .addValueEventListener(new ValueEventListener() {
+                                                                @Override
+                                                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                                                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                                                        caracteristicasAnimal.add((Double) ds.getValue());
+                                                                    }
+                                                                    for (int count2 = 0; count2 < 10; count2++){
+                                                                        compatibilidade[0] += Math.pow(caracteristicasAdotante.get(count2) - caracteristicasAnimal.get(count2), 2);
+                                                                    }
+                                                                    compatibilidadePorAnimal.add(Math.sqrt(compatibilidade[0]));
+                                                                    caracteristicasAnimal.clear();
+                                                                    compatibilidade[0] = 0;
+                                                                    Handler handler = new Handler();
+                                                                    handler.postDelayed(new Runnable() {
+                                                                        public void run() {
+                                                                            progressDialog.dismiss();
+                                                                            Intent intent = new Intent(Compatibilidade.this, ListaDeAnimais.class);
+                                                                            intent.putExtra(("CompatibilidadeAnimal"), compatibilidadePorAnimal);
+                                                                            intent.putStringArrayListExtra(("idAnimal"), idAnimal);
+                                                                            startActivity(intent);
+                                                                        }
+                                                                    }, 5000);
+
+                                                                }
+                                                                @Override
+                                                                public void onCancelled(DatabaseError databaseError) {
+                                                                }
+                                                            });
+                                                        count++;
                                                         }
-                                                        @Override
-                                                        public void onCancelled(DatabaseError databaseError) {
-                                                        }
-                                                    });
+                                                }
+
+                                                @Override
+                                                public void onCancelled(DatabaseError databaseError) {
+
+                                                }
+                                            });
+
+
                                         }
 
                                         @Override
@@ -87,8 +106,8 @@ public class Compatibilidade extends AppCompatActivity {
                                         }
                                     });
                             caracteristicasAdotante.clear();
-                            count++;
-                        }
+
+
                     }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
