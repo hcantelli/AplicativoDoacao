@@ -37,13 +37,13 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_animal);
 
+
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         final String idAnimal = bundle.getString("idAnimal");
 
         bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference().child("Animais").child(idAnimal);
-
-
+        
         inicializaVariaveis();
 
         bancoDeDados_firebase.addListenerForSingleValueEvent(new ValueEventListener() {
