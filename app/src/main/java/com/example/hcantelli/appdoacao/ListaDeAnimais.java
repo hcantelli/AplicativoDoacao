@@ -28,7 +28,7 @@ public class ListaDeAnimais extends AppCompatActivity implements AdapterView.OnI
     private ListView listaDeAnimais;
     private ArrayList<String> vetor_animais_02 = new ArrayList<>();
     private ArrayList<String> listaDeAnimais_vetor = new ArrayList<>();
-
+  
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -45,6 +45,7 @@ public class ListaDeAnimais extends AppCompatActivity implements AdapterView.OnI
         ArrayList<String> idAnimal = intent.getStringArrayListExtra("idAnimal");
         final Map<Double, String> vetor_animais = new HashMap<>();
         final ArrayList<String> idAnimalOrdenado = new ArrayList<>();
+
 
         for(int count = 0; count < idAnimal.size();){
             vetor_animais.put(compatibilidadePorAnimal.get(count), idAnimal.get(count));
@@ -90,7 +91,6 @@ public class ListaDeAnimais extends AppCompatActivity implements AdapterView.OnI
         Intent intent = new Intent(ListaDeAnimais.this, TelaAnimal.class);
         intent.putExtra("idAnimal", idAnimal);
         startActivity(intent);
-
     }
 
 }

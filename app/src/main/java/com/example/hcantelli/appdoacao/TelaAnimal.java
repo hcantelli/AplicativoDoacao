@@ -43,6 +43,7 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
 
         bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference().child("Animais").child(idAnimal);
 
+
         inicializaVariaveis();
 
         bancoDeDados_firebase.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -114,6 +115,7 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
         Bundle bundle = intent.getExtras();
         String idAnimal = bundle.getString("idAnimal");
         bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference().child("Animais").child(idAnimal);
+
 
         bancoDeDados_firebase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
