@@ -106,9 +106,24 @@ public class TelaUsuario extends AppCompatActivity {
         botao_listaAnimais.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TelaUsuario.this, Compatibilidade.class);
-                intent.putExtra(("Usuarios"), String.valueOf(idUsuario[0]));
-                startActivity(intent);
+                bancoDeDados_firebase.child("ResultadoIA").child(idUsuario[0]).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if(dataSnapshot.getChildrenCount() != 0){
+                            Intent intent = new Intent(TelaUsuario.this, Compatibilidade.class);
+                            intent.putExtra(("Usuarios"), String.valueOf(idUsuario[0]));
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(TelaUsuario.this, getText(R.string.listaAnimais_erro), Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
             }
         });
     }
