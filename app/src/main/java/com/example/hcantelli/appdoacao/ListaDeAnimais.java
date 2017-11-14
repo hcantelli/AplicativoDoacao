@@ -28,7 +28,7 @@ public class ListaDeAnimais extends AppCompatActivity implements AdapterView.OnI
     private ListView listaDeAnimais;
     private ArrayList<String> vetor_animais_02 = new ArrayList<>();
     private ArrayList<String> listaDeAnimais_vetor = new ArrayList<>();
-  
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
