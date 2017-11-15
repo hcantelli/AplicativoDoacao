@@ -27,6 +27,7 @@ import java.util.HashMap;
 
 public class Cadastro extends AppCompatActivity{
 
+    //Atributos
     private Button botao_firebase;
     private DatabaseReference bancoDeDados_firebase;
     private EditText view_nomeUsuario, view_email, view_dataDeNascimento, view_telefone, view_endereco, view_cep, view_cpf, view_senha;
@@ -41,9 +42,11 @@ public class Cadastro extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cadastro);
 
+        //Iniciando instâncias de banco de dados e autenticação
         bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference();
         autorizacao_firebase = FirebaseAuth.getInstance();
 
+        //Método para inicializar as variáveis, registrando os valores inseridos pelo usuário na tela
         inicializaVariaveis();
 
 
@@ -52,6 +55,7 @@ public class Cadastro extends AppCompatActivity{
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
+        //Verificando ação de clique no botão
         botao_firebase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,14 +65,17 @@ public class Cadastro extends AppCompatActivity{
                 if(validaVariaveis()){
                     final ProgressDialog progressDialog = ProgressDialog.show(Cadastro.this, getText(R.string.aguarde), getText(R.string.processando), true);
 
+                    //Autentica o usuário criando email e senha do mesmo
                     (autorizacao_firebase.createUserWithEmailAndPassword(email, senha)).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @ Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+                                //Conecta o usuário ao sistema de Autenticação
                                 (autorizacao_firebase.signInWithEmailAndPassword(email, senha)).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if(task.isSuccessful()){
+                                            //Insere o usuário na base de dados
                                             bancoDeDados_firebase.child("Usuarios").push().setValue(registraUsuario()).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
@@ -103,7 +110,8 @@ public class Cadastro extends AppCompatActivity{
         });
     }
 
-     private void inicializaVariaveis(){
+    //Método para inicializar as variáveis, registrando os valores inseridos pelo usuário na tela
+    private void inicializaVariaveis(){
         botao_firebase = (Button) findViewById(R.id.adiciona_firebase);
 
         inputLayoutNomeUsuario = (TextInputLayout) findViewById(R.id.inputLayoutNomeUsuario);
@@ -142,6 +150,7 @@ public class Cadastro extends AppCompatActivity{
 
     }
 
+    //Gera um hashmap inserindo todos os dados do usuário coletados e registrando-o na base de dados
     private HashMap<String, String> registraUsuario(){
         String nomeUsuario = view_nomeUsuario.getText().toString().trim();
         final String email = view_email.getText().toString().trim();
@@ -170,6 +179,7 @@ public class Cadastro extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
+    //Metódo que valida os caracteres dos campos inseridos antes de registrar o usuário na base de dados
     private boolean validaVariaveis(){
         boolean isValid = true;
 

@@ -43,9 +43,11 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
         final String idAnimal = bundle.getString("idAnimal");
 
         bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference().child("Animais").child(idAnimal);
-        
+
+        //Método para inicializar as variáveis, registrando os valores inseridos pelo usuário na tela
         inicializaVariaveis();
 
+        //Evento realizado para mostrar ao usuários os dados dos animais inseridos na base de dados
         bancoDeDados_firebase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -71,7 +73,7 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
         mapFragment.getMapAsync(this);
 
     }
-
+    //Método para inicializar as variáveis, registrando os valores inseridos pelo usuário na tela
     private void inicializaVariaveis(){
         nomeAnimal = (TextView) findViewById(R.id.nomeAnimal);
         tamanhoAnimal = (TextView) findViewById(R.id.tamanhoAnimal);
@@ -84,6 +86,7 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
         emailOng = (TextView) findViewById(R.id.emailOng);
     }
 
+    //Método que retorna latitude e longitude de um endereço passado como argumento
     public LatLng pegaLocalizacaoPeloEndereco(Context context, String strAddress) {
 
         Geocoder coder = new Geocoder(context);
@@ -108,6 +111,7 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
         return p1;
     }
 
+    //Método para gerar o mapa do endereço que se encontra o animal
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mapa_google = googleMap;
@@ -116,7 +120,7 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
         String idAnimal = bundle.getString("idAnimal");
         bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference().child("Animais").child(idAnimal);
 
-
+        //Evento realizado para registrar o endereço do Animal
         bancoDeDados_firebase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

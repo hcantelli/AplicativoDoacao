@@ -46,14 +46,14 @@ public class ListaDeAnimais extends AppCompatActivity implements AdapterView.OnI
         final Map<Double, String> vetor_animais = new HashMap<>();
         final ArrayList<String> idAnimalOrdenado = new ArrayList<>();
 
-
+        //Ordenando o vetor de Compatibilidade com o vetor de Identificadores de Animais
         for(int count = 0; count < idAnimal.size();){
             vetor_animais.put(compatibilidadePorAnimal.get(count), idAnimal.get(count));
             count++;
         }
-
+        //Ordenando o vetor de Compatibilidade com o vetor de Identificadores de Animais
         Collections.sort(compatibilidadePorAnimal);
-
+        //Ordenando o vetor de Compatibilidade com o vetor de Identificadores de Animais
         for(Double s : compatibilidadePorAnimal){
             vetor_animais.get(s);
             idAnimalOrdenado.add(vetor_animais.get(s));
@@ -65,6 +65,7 @@ public class ListaDeAnimais extends AppCompatActivity implements AdapterView.OnI
         listaDeAnimais = (ListView) findViewById(R.id.listaDeAnimais);
         listaDeAnimais.setAdapter(vetorAdaptado);
 
+        //Evento para armazenar os nomes de cada animal em uma lista
         bancoDeDados_firebase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

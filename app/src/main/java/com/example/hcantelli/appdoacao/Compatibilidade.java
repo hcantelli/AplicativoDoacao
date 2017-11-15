@@ -24,6 +24,7 @@ public class Compatibilidade extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.compatibilidade);
 
+        //Declaração de variáveis
         final double[] compatibilidade = {0};
         final ArrayList<Double> compatibilidadePorAnimal = new ArrayList<>();
         final ArrayList<String> idAnimal = new ArrayList<>();
@@ -35,6 +36,7 @@ public class Compatibilidade extends AppCompatActivity {
         final ProgressDialog progressDialog = ProgressDialog.show(Compatibilidade.this, getText(R.string.aguarde), getText(R.string.calculo_compatibilidade), true);
         progressDialog.show();
 
+        //Evento realizado para verificar o cálculo da compatibilidade do usuário com os animais na base de dados
         bancoDeDados_firebase
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -42,6 +44,7 @@ public class Compatibilidade extends AppCompatActivity {
                         final ArrayList<Double> caracteristicasAdotante = new ArrayList<>();
                         final ArrayList<Double> caracteristicasAnimal = new ArrayList<>();
 
+                            //Evento realizado para armazenar os dados do Adotante
                             bancoDeDados_firebase.child("ResultadoIA").child(idUsuario)
                                     .addValueEventListener(new ValueEventListener() {
                                         @Override
@@ -49,7 +52,7 @@ public class Compatibilidade extends AppCompatActivity {
                                             for (DataSnapshot ds : dataSnapshot.getChildren()) {
                                                 caracteristicasAdotante.add((Double) ds.getValue());
                                             }
-
+                                            //Evento realizado para armazenar os identificadores de cada Animal
                                             bancoDeDados_firebase.child("Animais").addValueEventListener(new ValueEventListener() {
                                                 @Override
                                                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -57,8 +60,9 @@ public class Compatibilidade extends AppCompatActivity {
                                                         idAnimal.add(String.valueOf(ds.getKey()));
                                                     }
 
+                                                    //Procura por cada animal para calcular cada característica com o Adotante
                                                     for(int count = 0; count < dataSnapshot.getChildrenCount();){
-                                                        final int finalCount = count;
+                                                        //Evento realizado para armazenar cada característica do Animal
                                                         bancoDeDados_firebase.child("Animais").child(idAnimal.get(count)).child("Personalidade")
                                                             .addValueEventListener(new ValueEventListener() {
                                                                 @Override
@@ -66,6 +70,7 @@ public class Compatibilidade extends AppCompatActivity {
                                                                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
                                                                         caracteristicasAnimal.add((Double) ds.getValue());
                                                                     }
+                                                                    //Cálculo do erro médio quadrático
                                                                     for (int count2 = 0; count2 < 10; count2++){
                                                                         compatibilidade[0] += Math.pow(caracteristicasAdotante.get(count2) - caracteristicasAnimal.get(count2), 2);
                                                                     }

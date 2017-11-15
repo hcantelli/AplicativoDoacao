@@ -33,6 +33,7 @@ public class TelaUsuario extends AppCompatActivity {
     public void onBackPressed() {
     }
 
+    //Método para criar um menu e inserir botão para logout
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -40,6 +41,7 @@ public class TelaUsuario extends AppCompatActivity {
         return true;
     }
 
+    //Método para inserir botão de logout
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         new AlertDialog.Builder(this)
@@ -72,6 +74,7 @@ public class TelaUsuario extends AppCompatActivity {
         botao_listaAnimais = (Button) findViewById(R.id.botao_listaAnimais);
         botao_formulario = (Button) findViewById(R.id.botao_formulario);
 
+        //Evento realizado para registrar o Identificador do Usuario
         bancoDeDados_firebase.child("Usuarios")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     public void onDataChange(DataSnapshot dataSnapshot) {
