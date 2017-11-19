@@ -100,4 +100,3 @@ public class ListaDeAnimais extends AppCompatActivity implements AdapterView.OnI
 
 }
 
-
