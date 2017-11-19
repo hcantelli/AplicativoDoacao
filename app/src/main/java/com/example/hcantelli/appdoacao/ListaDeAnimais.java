@@ -32,6 +32,7 @@ public class ListaDeAnimais extends AppCompatActivity implements AdapterView.OnI
     private ListView listaDeAnimais;
     private ArrayList<String> vetor_animais_02 = new ArrayList<>();
     private ArrayList<String> listaDeAnimais_vetor = new ArrayList<>();
+    private ArrayList<String> listaDeAnimais_vetor_fotos = new ArrayList<>();
 
     @Override
     public void onBackPressed() {
@@ -46,7 +47,7 @@ public class ListaDeAnimais extends AppCompatActivity implements AdapterView.OnI
 
         Intent intent = getIntent();
         ArrayList<Double> compatibilidadePorAnimal = (ArrayList<Double>) intent.getSerializableExtra("CompatibilidadeAnimal");
-        ArrayList<String> idAnimal = intent.getStringArrayListExtra("idAnimal");
+        final ArrayList<String> idAnimal = intent.getStringArrayListExtra("idAnimal");
         final Map<Double, String> vetor_animais = new HashMap<>();
         final ArrayList<String> idAnimalOrdenado = new ArrayList<>();
 
@@ -63,11 +64,10 @@ public class ListaDeAnimais extends AppCompatActivity implements AdapterView.OnI
             idAnimalOrdenado.add(vetor_animais.get(s));
         }
 
-        final ArrayAdapter<String> vetorAdaptado = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaDeAnimais_vetor);
+        final Adaptador vetorAdaptado = new Adaptador(this, listaDeAnimais_vetor, listaDeAnimais_vetor_fotos);
 
         bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference();
         listaDeAnimais = (ListView) findViewById(R.id.listaDeAnimais);
-        listaDeAnimais.setAdapter(vetorAdaptado);
 
         //Evento para armazenar os nomes de cada animal em uma lista
         bancoDeDados_firebase.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -75,6 +75,7 @@ public class ListaDeAnimais extends AppCompatActivity implements AdapterView.OnI
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(int count = 0; count < dataSnapshot.child("Animais").getChildrenCount();){
                     listaDeAnimais_vetor.add((String) dataSnapshot.child("Animais").child(idAnimalOrdenado.get(count)).child("Caracteristicas").child("nomeAnimal").getValue());
+                    listaDeAnimais_vetor_fotos.add((String) dataSnapshot.child("Animais").child(idAnimalOrdenado.get(count)).child("Caracteristicas").child("fotoAnimal").getValue());
                     count++;
                 }
                 vetorAdaptado.notifyDataSetChanged();
@@ -85,6 +86,7 @@ public class ListaDeAnimais extends AppCompatActivity implements AdapterView.OnI
 
             }
         });
+        listaDeAnimais.setAdapter(vetorAdaptado);
         vetor_animais_02.addAll(idAnimalOrdenado);
         listaDeAnimais.setOnItemClickListener(this);
     }
