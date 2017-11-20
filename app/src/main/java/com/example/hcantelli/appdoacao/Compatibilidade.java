@@ -38,7 +38,7 @@ public class Compatibilidade extends AppCompatActivity {
 
         //Evento realizado para verificar o cálculo da compatibilidade do usuário com os animais na base de dados
         bancoDeDados_firebase
-                .addValueEventListener(new ValueEventListener() {
+                .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         final ArrayList<Double> caracteristicasAdotante = new ArrayList<>();
@@ -46,14 +46,14 @@ public class Compatibilidade extends AppCompatActivity {
 
                             //Evento realizado para armazenar os dados do Adotante
                             bancoDeDados_firebase.child("ResultadoIA").child(idUsuario)
-                                    .addValueEventListener(new ValueEventListener() {
+                                    .addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(DataSnapshot dataSnapshot) {
                                             for (DataSnapshot ds : dataSnapshot.getChildren()) {
                                                 caracteristicasAdotante.add((Double) ds.getValue());
                                             }
                                             //Evento realizado para armazenar os identificadores de cada Animal
-                                            bancoDeDados_firebase.child("Animais").addValueEventListener(new ValueEventListener() {
+                                            bancoDeDados_firebase.child("Animais").addListenerForSingleValueEvent(new ValueEventListener() {
                                                 @Override
                                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                                     for (DataSnapshot ds : dataSnapshot.getChildren()){
@@ -64,7 +64,7 @@ public class Compatibilidade extends AppCompatActivity {
                                                     for(int count = 0; count < dataSnapshot.getChildrenCount();){
                                                         //Evento realizado para armazenar cada característica do Animal
                                                         bancoDeDados_firebase.child("Animais").child(idAnimal.get(count)).child("Personalidade")
-                                                            .addValueEventListener(new ValueEventListener() {
+                                                            .addListenerForSingleValueEvent(new ValueEventListener() {
                                                                 @Override
                                                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                                                     for (DataSnapshot ds : dataSnapshot.getChildren()) {

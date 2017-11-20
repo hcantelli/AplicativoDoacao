@@ -28,11 +28,11 @@
 
             <TextView
                 android:id="@+id/nomeAnimal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/fotoAnimal"
                 android:layout_centerHorizontal="true"
-                android:textAlignment="center"
+                android:gravity="center"
                 android:textAllCaps="true"
                 android:textSize="30sp"
                 android:textStyle="bold" />
@@ -50,13 +50,12 @@
 
             <TextView
                 android:id="@+id/tamanhoAnimal"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/nomeAnimal"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_toEndOf="@+id/idPorte"
-                />
+                android:layout_alignBaseline="@+id/idPorte"
+                android:layout_alignBottom="@+id/idPorte"
+                android:layout_alignStart="@+id/pelagemAnimal"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/idPelagem"
@@ -70,13 +69,13 @@
 
             <TextView
                 android:id="@+id/pelagemAnimal"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/idPorte"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_toEndOf="@+id/idPelagem"
-                />
+                android:layout_alignBaseline="@+id/idPelagem"
+                android:layout_alignBottom="@+id/idPelagem"
+                android:layout_alignEnd="@+id/fotoAnimal"
+                android:layout_marginEnd="92dp"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/idCor"
@@ -90,13 +89,12 @@
 
             <TextView
                 android:id="@+id/corAnimal"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/idPelagem"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_toEndOf="@+id/idCor"
-                />
+                android:layout_alignBaseline="@+id/idCor"
+                android:layout_alignBottom="@+id/idCor"
+                android:layout_alignStart="@+id/tamanhoAnimal"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/idIdade"
@@ -110,13 +108,11 @@
 
             <TextView
                 android:id="@+id/idadeAnimal"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/idCor"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_toEndOf="@+id/idIdade"
-                />
+                android:layout_above="@+id/itensAnimal"
+                android:layout_alignStart="@+id/corAnimal"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/itensAnimal"
@@ -135,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/itensAnimal"
                 android:layout_marginTop="16dp"
-                android:background="@color/corPrimaria">
+                android:background="@drawable/borda2">
 
                 <TextView
                     android:id="@+id/descricaoAnimal"
@@ -148,61 +144,60 @@
 
             </FrameLayout>
 
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/relativeLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="170dp"
                 android:layout_alignStart="@+id/frameLayout"
                 android:layout_below="@+id/frameLayout"
                 android:layout_marginTop="16dp"
-                android:background="@color/corPrimariaEscura">
-
-                <TextView
-                    android:id="@+id/idOng"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/telaAnimal_ong"
-                    android:textColor="@android:color/white"
-                    android:textStyle="bold" />
+                android:orientation="vertical"
+                android:background="@drawable/borda1"
+                >
 
                 <TextView
                     android:id="@+id/nomeOng"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:textColor="@android:color/white"
-                    android:layout_toEndOf="@+id/idOng"
-                    />
-
-                <TextView
-                    android:id="@+id/enderecoOng"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/idOng"
-                    android:textColor="@android:color/white"
-                    android:layout_marginTop="8dp"
+                    android:drawableStart="@mipmap/nome"
+                    android:gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginStart="15dp"
+                    android:textStyle="bold"
                     />
 
                 <TextView
                     android:id="@+id/telefoneOng"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/enderecoOng"
-                    android:textColor="@android:color/white"
-                    android:layout_marginTop="8dp"
-                    />
+                    android:drawableStart="@mipmap/telefone"
+                    android:layout_marginTop="13dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_marginStart="16dp" />
 
                 <TextView
                     android:id="@+id/emailOng"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/telefoneOng"
-                    android:textColor="@android:color/white"
-                    android:layout_marginTop="8dp"
-                    />
+                    android:drawableStart="@mipmap/email"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_marginStart="15dp"/>
+
+                <TextView
+                    android:id="@+id/enderecoOng"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@mipmap/endereco"
+                    android:layout_marginTop="13dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_marginStart="19dp"/>
 
 
-            </RelativeLayout>
+            </LinearLayout>
 
             <fragment xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
