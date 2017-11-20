@@ -12,6 +12,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class Adaptador extends ArrayAdapter<String>{
 
     private ArrayList<String> listaDeAnimais_fotos;
@@ -29,7 +31,7 @@ public class Adaptador extends ArrayAdapter<String>{
 
     public class ViewHolder{
         TextView nomeAnimal;
-        ImageView fotoAnimal;
+        CircleImageView fotoAnimal;
     }
 
     @Override
@@ -43,7 +45,7 @@ public class Adaptador extends ArrayAdapter<String>{
         final ViewHolder holder = new ViewHolder();
 
         holder.nomeAnimal = (TextView) convertView.findViewById(R.id.nomeAnimal);
-        holder.fotoAnimal = (ImageView) convertView.findViewById(R.id.fotoAnimal);
+        holder.fotoAnimal = (CircleImageView) convertView.findViewById(R.id.fotoAnimal);
 
         Picasso.with(c).load(listaDeAnimais_fotos.get(position)).into(holder.fotoAnimal);
         holder.nomeAnimal.setText(listaDeAnimais_nomes.get(position));

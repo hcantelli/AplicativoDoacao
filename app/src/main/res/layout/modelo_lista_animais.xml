@@ -6,7 +6,7 @@
     android:orientation="vertical"
     >
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/fotoAnimal"
         android:layout_width="75dp"
         android:layout_height="75dp"
@@ -22,8 +22,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:layout_toEndOf="@+id/fotoAnimal"
+        android:textStyle="bold|italic"
+        android:textSize="20sp"
         />
 
 </RelativeLayout>
