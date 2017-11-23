@@ -30,7 +30,7 @@ import java.util.List;
 
 public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
 
-    private TextView nomeAnimal, tamanhoAnimal, pelagemAnimal, corAnimal, idadeAnimal;
+    private TextView nomeAnimal, tamanhoAnimal, pelagemAnimal, corAnimal, idadeAnimal, alergiaAnimal, doencaAnimal, descricaoAnimal;
     private ImageView fotoAnimal;
     private TextView nomeOng, enderecoOng, telefoneOng, emailOng;
     private DatabaseReference bancoDeDados_firebase;
@@ -62,6 +62,9 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
                 pelagemAnimal.setText(dataSnapshot.child("Caracteristicas").child("pelagem").getValue().toString().trim());
                 corAnimal.setText(dataSnapshot.child("Caracteristicas").child("cor").getValue().toString().trim());
                 idadeAnimal.setText(dataSnapshot.child("Caracteristicas").child("idade").getValue().toString().trim());
+                alergiaAnimal.setText(dataSnapshot.child("HistoricoMedico").child("alergias").getValue().toString().trim());
+                doencaAnimal.setText(dataSnapshot.child("HistoricoMedico").child("doencas").getValue().toString().trim());
+                descricaoAnimal.setText(dataSnapshot.child("Caracteristicas").child("descricao").getValue().toString().trim());
 
                 nomeOng.setText(dataSnapshot.child("ONG").child("nomeOng").getValue().toString().trim());
                 enderecoOng.setText(dataSnapshot.child("ONG").child("endereco").getValue().toString().trim());
@@ -91,6 +94,9 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
         telefoneOng = (TextView) findViewById(R.id.telefoneOng);
         emailOng = (TextView) findViewById(R.id.emailOng);
         fotoAnimal = (ImageView) findViewById(R.id.fotoAnimal);
+        alergiaAnimal = (TextView) findViewById(R.id.alergiaAnimal);
+        doencaAnimal = (TextView) findViewById(R.id.doencaAnimal);
+        descricaoAnimal = (TextView) findViewById(R.id.descricaoAnimal);
     }
 
     //Método que retorna latitude e longitude de um endereço passado como argumento

@@ -98,4 +98,6 @@
     <string name="telaAnimal_idade">Idade</string>
     <string name="telaAnimal_ong">ONG</string>
     <string name="telaAnimal_fotoAnimal">Foto do Animal</string>
+    <string name="telaAnimal_alergias">Alergias</string>
+    <string name="telaAnimal_doencas">Doenças</string>
 </resources>
