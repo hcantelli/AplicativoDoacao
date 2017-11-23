@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -20,6 +22,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,6 +31,7 @@ import java.util.List;
 public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
 
     private TextView nomeAnimal, tamanhoAnimal, pelagemAnimal, corAnimal, idadeAnimal;
+    private ImageView fotoAnimal;
     private TextView nomeOng, enderecoOng, telefoneOng, emailOng;
     private DatabaseReference bancoDeDados_firebase;
     private GoogleMap mapa_google;
@@ -43,12 +47,16 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
         final String idAnimal = bundle.getString("idAnimal");
 
         bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference().child("Animais").child(idAnimal);
-        
-        inicializaVariaveis();
 
+        //Método para inicializar as variáveis, registrando os valores inseridos pelo usuário na tela
+        inicializaVariaveis();
+        //Evento realizado para mostrar ao usuários os dados dos animais inseridos na base de dados
         bancoDeDados_firebase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Picasso.with(TelaAnimal.this).load(dataSnapshot.child("Caracteristicas").child("fotoAnimal").getValue().toString()).into(fotoAnimal);
+
                 nomeAnimal.setText(dataSnapshot.child("Caracteristicas").child("nomeAnimal").getValue().toString().trim());
                 tamanhoAnimal.setText(dataSnapshot.child("Caracteristicas").child("tamanhoAnimal").getValue().toString().trim());
                 pelagemAnimal.setText(dataSnapshot.child("Caracteristicas").child("pelagem").getValue().toString().trim());
@@ -71,7 +79,7 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
         mapFragment.getMapAsync(this);
 
     }
-
+    //Método para inicializar as variáveis, registrando os valores inseridos pelo usuário na tela
     private void inicializaVariaveis(){
         nomeAnimal = (TextView) findViewById(R.id.nomeAnimal);
         tamanhoAnimal = (TextView) findViewById(R.id.tamanhoAnimal);
@@ -82,8 +90,10 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
         enderecoOng = (TextView) findViewById(R.id.enderecoOng);
         telefoneOng = (TextView) findViewById(R.id.telefoneOng);
         emailOng = (TextView) findViewById(R.id.emailOng);
+        fotoAnimal = (ImageView) findViewById(R.id.fotoAnimal);
     }
 
+    //Método que retorna latitude e longitude de um endereço passado como argumento
     public LatLng pegaLocalizacaoPeloEndereco(Context context, String strAddress) {
 
         Geocoder coder = new Geocoder(context);
@@ -108,6 +118,7 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
         return p1;
     }
 
+    //Método para gerar o mapa do endereço que se encontra o animal
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mapa_google = googleMap;
@@ -116,12 +127,12 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
         String idAnimal = bundle.getString("idAnimal");
         bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference().child("Animais").child(idAnimal);
 
-
+        //Evento realizado para registrar o endereço do Animal
         bancoDeDados_firebase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 LatLng ong = pegaLocalizacaoPeloEndereco(TelaAnimal.this, dataSnapshot.child("ONG").child("endereco").getValue().toString());
-                mapa_google.addMarker(new MarkerOptions().position(ong).title("ONG " + dataSnapshot.child("ONG").child("nomeOng").getValue().toString()));
+                mapa_google.addMarker(new MarkerOptions().position(ong).title(dataSnapshot.child("ONG").child("nomeOng").getValue().toString()));
                 mapa_google.moveCamera(CameraUpdateFactory.newLatLngZoom(ong , 15.0f));
             }
 

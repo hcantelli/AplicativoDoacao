@@ -33,6 +33,7 @@ public class TelaInicial extends AppCompatActivity {
         botao_login = (Button) findViewById(R.id.botao_login);
         bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference();
 
+        //Verificando ação de clique no botão
         botao_cadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,6 +42,7 @@ public class TelaInicial extends AppCompatActivity {
             }
         });
 
+        //Verificando ação de clique no botão
         botao_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

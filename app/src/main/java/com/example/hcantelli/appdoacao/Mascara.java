@@ -4,6 +4,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 
+//Classe para inserir Máscaras de CPF, CEP, Telefone e Data de Nascimento
 public abstract class Mascara {
     public static String unmask(String s) {
         return s.replaceAll("[.]", "").replaceAll("[-]", "")

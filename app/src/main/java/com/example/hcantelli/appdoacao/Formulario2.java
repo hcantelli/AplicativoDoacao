@@ -47,6 +47,7 @@ public class Formulario2 extends AppCompatActivity {
                 }
                 else
                 {
+                    //Armazena respostas selecionadas na base de dados
                     bancoDeDados_firebase.child("Formulario").child(idUsuario).child("pergunta3").setValue(respostaBotao3());
                     bancoDeDados_firebase.child("Formulario").child(idUsuario).child("pergunta4").setValue(respostaBotao4());
                     Intent intent2 = new Intent(Formulario2.this, Formulario3.class);
@@ -67,6 +68,7 @@ public class Formulario2 extends AppCompatActivity {
         int radioButtonId4 = grupoPergunta4.getCheckedRadioButtonId();
         botao_radio4 = (RadioButton) findViewById(radioButtonId4);
     }
+    //Método que garante que ao menos uma opção foi selecionada
     public int respostaBotao3(){
         int respostaBotao3 = 0;
         if (botao_radio3.getText().toString().trim().equals(getText(R.string.textoRadioButton11))){
@@ -82,6 +84,7 @@ public class Formulario2 extends AppCompatActivity {
         }
         return respostaBotao3;
     }
+    //Método que garante que ao menos uma opção foi selecionada
     public int respostaBotao4(){
         int respostaBotao4 = 0;
         if (botao_radio4.getText().toString().trim().equals(getText(R.string.textoRadioButton16))){

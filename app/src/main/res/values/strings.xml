@@ -92,4 +92,10 @@
     <string name="erro_email">com.google.firebase.auth.FirebaseAuthUserCollisionException: The email address is already in use by another account.</string>
     <string name="calculo_compatibilidade">Estamos selecionando os melhores animais para você!</string>
     <string name="listaAnimais_erro">Por favor, realize o formulário antes de prosseguir.</string>
+    <string name="telaAnimal_porte">Porte</string>
+    <string name="telaAnimal_pelagem">Pelagem</string>
+    <string name="telaAnimal_cor">Cor</string>
+    <string name="telaAnimal_idade">Idade</string>
+    <string name="telaAnimal_ong">ONG</string>
+    <string name="telaAnimal_fotoAnimal">Foto do Animal</string>
 </resources>

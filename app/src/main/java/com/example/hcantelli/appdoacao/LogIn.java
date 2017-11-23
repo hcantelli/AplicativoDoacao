@@ -50,6 +50,7 @@ public class LogIn extends AppCompatActivity {
 
     }
 
+    //Realiza conexão com serviço de autenticação para conectar o usuário ao serviço de autenticação
     private void inicializaLogin(){
 
         final String email = email_login.getText().toString().trim();
@@ -82,6 +83,7 @@ public class LogIn extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //Método para inicializar as variáveis, registrando os valores inseridos pelo usuário na tela
     private void inicializaVariaveis(){
         botao_login = (Button) findViewById(R.id.botao_login);
 
@@ -97,6 +99,7 @@ public class LogIn extends AppCompatActivity {
 
     }
 
+    //Metódo que valida os caracteres dos campos inseridos antes de autenticar o usuário no serviço de autenticação
     private boolean validaVariaveis(){
         boolean isValid = true;
 
