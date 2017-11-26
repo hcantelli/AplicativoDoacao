@@ -55,7 +55,7 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                Picasso.with(TelaAnimal.this).load(dataSnapshot.child("Caracteristicas").child("fotoAnimal").getValue().toString()).into(fotoAnimal);
+                Picasso.with(TelaAnimal.this).load(dataSnapshot.child("Caracteristicas").child("fotoAnimal").getValue().toString()).placeholder(R.mipmap.placeholder_foto).into(fotoAnimal);
 
                 nomeAnimal.setText(dataSnapshot.child("Caracteristicas").child("nomeAnimal").getValue().toString().trim());
                 tamanhoAnimal.setText(dataSnapshot.child("Caracteristicas").child("tamanhoAnimal").getValue().toString().trim());

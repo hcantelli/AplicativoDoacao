@@ -47,7 +47,7 @@ public class Adaptador extends ArrayAdapter<String>{
         holder.nomeAnimal = (TextView) convertView.findViewById(R.id.nomeAnimal);
         holder.fotoAnimal = (CircleImageView) convertView.findViewById(R.id.fotoAnimal);
 
-        Picasso.with(c).load(listaDeAnimais_fotos.get(position)).into(holder.fotoAnimal);
+        Picasso.with(c).load(listaDeAnimais_fotos.get(position)).placeholder(R.mipmap.placeholder_foto).into(holder.fotoAnimal);
         holder.nomeAnimal.setText(listaDeAnimais_nomes.get(position));
 
         return convertView;

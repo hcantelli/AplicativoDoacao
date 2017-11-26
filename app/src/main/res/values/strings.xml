@@ -1,12 +1,12 @@
 <resources>
-    <string name="nomeApp">AppDoacao</string>
+    <string name="nome_aplicacao">AppDoacao</string>
     <string name="cadastro">Cadastro</string>
     <string name="login">LogIn</string>
     <string name="aguarde">Por favor, aguarde&#8230;</string>
     <string name="processando">Processando&#8230;</string>
     <string name="login_sucesso">Login feito com sucesso!</string>
     <string name="cadastro_sucesso">Cadastro feito com sucesso!</string>
-    <string name="login_erro">Login inválido. Tente novamente.</string>
+    <string name="login_erro">Login ou senha inválidos. Tente novamente.</string>
     <string name="cadastro_erro">Ops&#8230; Ocorreu algum erro no Cadastro. Tente novamente.</string>
     <string name="obrigatorio">Campo obrigatório</string>
     <string name="cep">CEP</string>
@@ -100,4 +100,8 @@
     <string name="telaAnimal_fotoAnimal">Foto do Animal</string>
     <string name="telaAnimal_alergias">Alergias</string>
     <string name="telaAnimal_doencas">Doenças</string>
+    <string name="inserir_animal">Encontrei um animal para adoção!</string>
+    <string name="dadosAnimalNovo">Dados do Animal</string>
+    <string name="tirarFoto">Tirar foto</string>
+    <string name="permissao_camera">É necessário aceitar as permissões para utilizar essa função.</string>
 </resources>
