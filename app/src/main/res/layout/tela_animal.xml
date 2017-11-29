@@ -184,45 +184,44 @@
                 >
 
                 <TextView
-                    android:id="@+id/nomeOng"
+                    android:id="@+id/nomeContato"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="4dp"
                     android:drawableStart="@mipmap/nome"
                     android:gravity="center"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginStart="15dp"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/telefoneOng"
+                    android:id="@+id/telefoneContato"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="13dp"
                     android:drawableStart="@mipmap/telefone"
-                    android:layout_marginTop="13dp"
                     android:gravity="center"
-                    android:textStyle="bold"
-                    android:layout_marginStart="16dp" />
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/emailOng"
+                    android:id="@+id/emailContato"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@mipmap/email"
+                    android:layout_marginStart="15dp"
                     android:layout_marginTop="16dp"
+                    android:drawableStart="@mipmap/email"
                     android:gravity="center"
-                    android:textStyle="bold"
-                    android:layout_marginStart="15dp"/>
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/enderecoOng"
+                    android:id="@+id/enderecoContato"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@mipmap/endereco"
+                    android:layout_marginStart="19dp"
                     android:layout_marginTop="13dp"
+                    android:drawableStart="@mipmap/endereco"
                     android:gravity="center"
-                    android:textStyle="bold"
-                    android:layout_marginStart="19dp"/>
+                    android:textStyle="bold" />
 
 
             </LinearLayout>

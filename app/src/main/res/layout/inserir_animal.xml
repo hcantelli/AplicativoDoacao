@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true"
     tools:layout_editor_absoluteX="-16dp"
-    tools:layout_editor_absoluteY="-501dp"
-    >
+    tools:layout_editor_absoluteY="-501dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,10 +15,11 @@
         <ImageView
             android:id="@+id/fotoAnimal"
             android:layout_width="350dp"
-            android:layout_height="350dp"
+            android:layout_height="250dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
+            android:background="@mipmap/placeholder_foto"
             android:contentDescription="@string/telaAnimal_fotoAnimal" />
 
         <Button
@@ -27,12 +28,483 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/fotoAnimal"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="11dp"
             android:background="@drawable/botao1"
+            android:text="@string/tirarFoto"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/idCaracteristicas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tirarFoto"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:text="@string/caracteristicas"
+            android:textAllCaps="true"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/inputLayoutCorAnimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/inputLayoutNomeAnimal"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp">
+
+            <EditText
+                android:id="@+id/corAnimal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:hint="@string/corAnimal"
+                android:inputType="textPersonName"
+                android:selectAllOnFocus="false"
+                tools:layout_editor_absoluteX="11dp"
+                tools:layout_editor_absoluteY="26dp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/inputLayoutDescricaoAnimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/inputLayoutCorAnimal"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp">
+
+            <EditText
+                android:id="@+id/descricaoAnimal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:hint="@string/descricaoAnimal"
+                android:inputType="textPersonName"
+                android:selectAllOnFocus="false"
+                tools:layout_editor_absoluteX="11dp"
+                tools:layout_editor_absoluteY="26dp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/generoAnimal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/inputLayoutDescricaoAnimal"
+            android:layout_below="@+id/inputLayoutDescricaoAnimal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="18dp"
+            android:selectAllOnFocus="false"
+            android:text="@string/generoAnimal"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spinnerGeneroAnimal"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/inputLayoutDescricaoAnimal"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown" />
+
+        <TextView
+            android:id="@+id/idadeAnimal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/tirarFoto"
+            android:layout_alignTop="@+id/spinnerIdadeAnimal"
+            android:layout_marginTop="9dp"
+            android:selectAllOnFocus="false"
+            android:text="@string/idadeAnimal"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spinnerIdadeAnimal"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/spinnerGeneroAnimal"
+            android:layout_below="@+id/spinnerGeneroAnimal"
+            android:layout_marginTop="8dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/inputLayoutNomeAnimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/idCaracteristicas"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp">
+
+            <EditText
+                android:id="@+id/nomeAnimal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:hint="@string/nomeAnimal"
+                android:inputType="textPersonName"
+                android:selectAllOnFocus="false"
+                tools:layout_editor_absoluteX="11dp"
+                tools:layout_editor_absoluteY="26dp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/pelagemAnimal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/idadeAnimal"
+            android:layout_alignTop="@+id/spinnerPelagemAnimal"
+            android:layout_below="@+id/idadeAnimal"
+            android:selectAllOnFocus="false"
+            android:layout_marginTop="10dp"
+            android:text="@string/pelagemAnimal"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spinnerPelagemAnimal"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_alignEnd="@+id/spinnerIdadeAnimal"
+            android:layout_below="@+id/spinnerIdadeAnimal"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown" />
+        <TextView
+            android:id="@+id/tamanhoAnimal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/inputLayoutDescricaoAnimal"
+            android:layout_alignTop="@+id/spinnerTamanhoAnimal"
+            android:layout_below="@+id/pelagemAnimal"
+            android:selectAllOnFocus="false"
+            android:layout_marginTop="10dp"
+            android:text="@string/tamanhoAnimal"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spinnerTamanhoAnimal"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/spinnerPelagemAnimal"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="8dp"
+            android:layout_alignEnd="@+id/tamanhoAnimal"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown" />
+        <TextView
+            android:id="@+id/tipoAnimal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tamanhoAnimal"
+            android:layout_alignTop="@+id/spinnerTipoAnimal"
+            android:layout_alignStart="@+id/inputLayoutDescricaoAnimal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:selectAllOnFocus="false"
+            android:text="@string/tipoAnimal"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spinnerTipoAnimal"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/spinnerTamanhoAnimal"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown" />
+
+        <TextView
+            android:id="@+id/idHistoricoMedico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinnerTipoAnimal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:text="@string/historicoMedico"
+            android:textAllCaps="true"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/alergiaAnimal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/idHistoricoMedico"
+            android:layout_alignTop="@+id/spinnerAlergiasAnimal"
+            android:layout_alignStart="@+id/inputLayoutDescricaoAnimal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:selectAllOnFocus="false"
+            android:text="@string/alergiaAnimal"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spinnerAlergiasAnimal"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/idHistoricoMedico"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown" />
+        <TextView
+            android:id="@+id/doencaAnimal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/alergiaAnimal"
+            android:layout_alignTop="@+id/spinnerDoencasAnimal"
+            android:layout_alignStart="@+id/inputLayoutDescricaoAnimal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:selectAllOnFocus="false"
+            android:text="@string/doencaAnimal"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spinnerDoencasAnimal"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/spinnerAlergiasAnimal"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown" />
+        <TextView
+            android:id="@+id/idContatos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/doencaAnimal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="35dp"
+            android:gravity="center"
+            android:text="@string/contatos"
+            android:textAllCaps="true"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/inputLayoutEmailContato"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/idContatos"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp">
+
+            <EditText
+                android:id="@+id/emailContato"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:hint="@string/emailContato"
+                android:inputType="textEmailAddress"
+                android:selectAllOnFocus="false"
+                tools:layout_editor_absoluteX="11dp"
+                tools:layout_editor_absoluteY="26dp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/inputLayoutEnderecoContato"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/inputLayoutEmailContato"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp">
+
+            <EditText
+                android:id="@+id/enderecoContato"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:hint="@string/enderecoContato"
+                android:inputType="textPersonName"
+                android:selectAllOnFocus="false"
+                tools:layout_editor_absoluteX="11dp"
+                tools:layout_editor_absoluteY="26dp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/inputLayoutNomeContato"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/inputLayoutEnderecoContato"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp">
+
+            <EditText
+                android:id="@+id/nomeContato"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:hint="@string/nomeContato"
+                android:inputType="textPersonName"
+                android:selectAllOnFocus="false"
+                tools:layout_editor_absoluteX="11dp"
+                tools:layout_editor_absoluteY="26dp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/inputLayoutTelefoneContato"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/inputLayoutNomeContato"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp">
+
+            <EditText
+                android:id="@+id/telefoneContato"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:hint="@string/telefoneContato"
+                android:inputType="phone"
+                android:selectAllOnFocus="false"
+                tools:layout_editor_absoluteX="11dp"
+                tools:layout_editor_absoluteY="26dp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/idPersonalidade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/inputLayoutTelefoneContato"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:text="@string/personalidade"
+            android:textAllCaps="true"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/agitado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/idPersonalidade"
+            android:layout_marginTop="10dp"
+            android:selectAllOnFocus="false"
+            android:text="@string/agitado"
+            android:layout_marginStart="5dp"
+            android:textSize="18sp" />
+
+        <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+            android:id="@+id/agitadoSeekBar"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/amigavel"
+            android:layout_alignStart="@+id/amigavelSeekBar"
+            android:max="9"
+            app:dsb_min="1"
+            app:dsb_max="10"
+            app:dsb_indicatorPopupEnabled="true"
+            app:dsb_indicatorColor="@color/corPrimariaEscura"
+            app:dsb_progressColor="@color/corPrimariaEscura"
+            app:dsb_trackColor="@color/corPrimariaEscura"
+            />
+
+        <TextView
+            android:id="@+id/amigavel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/agitado"
+            android:layout_marginTop="20dp"
+            android:selectAllOnFocus="false"
+            android:text="@string/amigavel"
+            android:layout_marginStart="5dp"
+            android:textSize="18sp" />
+        <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+            android:id="@+id/amigavelSeekBar"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/carente"
+            android:layout_alignEnd="@+id/inputLayoutTelefoneContato"
+            app:dsb_min="1"
+            app:dsb_max="10"
+            app:dsb_indicatorPopupEnabled="true"
+            app:dsb_indicatorColor="@color/corPrimariaEscura"
+            app:dsb_progressColor="@color/corPrimariaEscura"
+            app:dsb_trackColor="@color/corPrimariaEscura"
+            />
+        <TextView
+            android:id="@+id/carente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/amigavel"
+            android:layout_marginTop="20dp"
+            android:selectAllOnFocus="false"
+            android:text="@string/carente"
+            android:layout_marginStart="5dp"
+            android:textSize="18sp" />
+        <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+            android:id="@+id/carenteSeekBar"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/carinhoso"
+            android:layout_alignEnd="@+id/inputLayoutTelefoneContato"
+            app:dsb_min="1"
+            app:dsb_max="10"
+            app:dsb_indicatorPopupEnabled="true"
+            app:dsb_indicatorColor="@color/corPrimariaEscura"
+            app:dsb_progressColor="@color/corPrimariaEscura"
+            app:dsb_trackColor="@color/corPrimariaEscura"
+            />
+        <TextView
+            android:id="@+id/carinhoso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/carente"
+            android:layout_marginTop="20dp"
+            android:selectAllOnFocus="false"
+            android:text="@string/carinhoso"
+            android:layout_marginStart="5dp"
+            android:textSize="18sp" />
+
+        <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+            android:id="@+id/carinhosoSeekBar"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/inserirAnimal"
+            android:layout_alignStart="@+id/carenteSeekBar"
+            app:dsb_indicatorColor="@color/corPrimariaEscura"
+            app:dsb_indicatorPopupEnabled="true"
+            app:dsb_max="10"
+            app:dsb_min="1"
+            app:dsb_progressColor="@color/corPrimariaEscura"
+            app:dsb_trackColor="@color/corPrimariaEscura" />
+
+        <Button
+            android:id="@+id/inserirAnimal"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/carinhoso"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/botao1"
+            android:text="@string/inserirAnimal"
             android:textColor="@android:color/white"
             android:textSize="18sp"
-            android:layout_marginTop="11dp"
-            android:text="@string/tirarFoto" />
-
+            />
 
     </RelativeLayout>
 
