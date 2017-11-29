@@ -27,7 +27,7 @@ public class TelaUsuario extends AppCompatActivity {
 
     private TextView nome_exibido;
     private DatabaseReference bancoDeDados_firebase;
-    private Button botao_listaAnimais, botao_formulario;
+    private Button botao_listaAnimais, botao_formulario, botao_inserirAnimal;
 
     @Override
     public void onBackPressed() {
@@ -73,6 +73,7 @@ public class TelaUsuario extends AppCompatActivity {
         nome_exibido = (TextView) findViewById(R.id.nomeUsuarioExibido);
         botao_listaAnimais = (Button) findViewById(R.id.botao_listaAnimais);
         botao_formulario = (Button) findViewById(R.id.botao_formulario);
+        botao_inserirAnimal = (Button) findViewById(R.id.botao_inserirAnimal);
 
         //Evento realizado para registrar o Identificador do Usuario
         bancoDeDados_firebase.child("Usuarios")
@@ -127,6 +128,15 @@ public class TelaUsuario extends AppCompatActivity {
                     }
                 });
 
+            }
+        });
+
+        botao_inserirAnimal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TelaUsuario.this, InserirAnimal.class);
+                intent.putExtra(("Usuarios"), String.valueOf(idUsuario[0]));
+                startActivity(intent);
             }
         });
     }

@@ -30,9 +30,9 @@ import java.util.List;
 
 public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
 
-    private TextView nomeAnimal, tamanhoAnimal, pelagemAnimal, corAnimal, idadeAnimal;
+    private TextView nomeAnimal, tamanhoAnimal, pelagemAnimal, corAnimal, idadeAnimal, alergiaAnimal, doencaAnimal, descricaoAnimal;
     private ImageView fotoAnimal;
-    private TextView nomeOng, enderecoOng, telefoneOng, emailOng;
+    private TextView nomeContato, enderecoContato, telefoneContato, emailContato;
     private DatabaseReference bancoDeDados_firebase;
     private GoogleMap mapa_google;
 
@@ -55,18 +55,21 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                Picasso.with(TelaAnimal.this).load(dataSnapshot.child("Caracteristicas").child("fotoAnimal").getValue().toString()).into(fotoAnimal);
+                Picasso.with(TelaAnimal.this).load(dataSnapshot.child("Caracteristicas").child("fotoAnimal").getValue().toString()).placeholder(R.mipmap.placeholder_foto).into(fotoAnimal);
 
                 nomeAnimal.setText(dataSnapshot.child("Caracteristicas").child("nomeAnimal").getValue().toString().trim());
                 tamanhoAnimal.setText(dataSnapshot.child("Caracteristicas").child("tamanhoAnimal").getValue().toString().trim());
                 pelagemAnimal.setText(dataSnapshot.child("Caracteristicas").child("pelagem").getValue().toString().trim());
                 corAnimal.setText(dataSnapshot.child("Caracteristicas").child("cor").getValue().toString().trim());
                 idadeAnimal.setText(dataSnapshot.child("Caracteristicas").child("idade").getValue().toString().trim());
+                alergiaAnimal.setText(dataSnapshot.child("HistoricoMedico").child("alergias").getValue().toString().trim());
+                doencaAnimal.setText(dataSnapshot.child("HistoricoMedico").child("doencas").getValue().toString().trim());
+                descricaoAnimal.setText(dataSnapshot.child("Caracteristicas").child("descricao").getValue().toString().trim());
 
-                nomeOng.setText(dataSnapshot.child("ONG").child("nomeOng").getValue().toString().trim());
-                enderecoOng.setText(dataSnapshot.child("ONG").child("endereco").getValue().toString().trim());
-                telefoneOng.setText(dataSnapshot.child("ONG").child("telefone").getValue().toString().trim());
-                emailOng.setText(dataSnapshot.child("ONG").child("emailOng").getValue().toString().trim());
+                nomeContato.setText(dataSnapshot.child("Contato").child("nomeContato").getValue().toString().trim());
+                enderecoContato.setText(dataSnapshot.child("Contato").child("enderecoContato").getValue().toString().trim());
+                telefoneContato.setText(dataSnapshot.child("Contato").child("telefoneContato").getValue().toString().trim());
+                emailContato.setText(dataSnapshot.child("Contato").child("emailContato").getValue().toString().trim());
             }
 
             @Override
@@ -86,11 +89,14 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
         pelagemAnimal = (TextView) findViewById(R.id.pelagemAnimal);
         corAnimal = (TextView) findViewById(R.id.corAnimal);
         idadeAnimal = (TextView) findViewById(R.id.idadeAnimal);
-        nomeOng = (TextView) findViewById(R.id.nomeOng);
-        enderecoOng = (TextView) findViewById(R.id.enderecoOng);
-        telefoneOng = (TextView) findViewById(R.id.telefoneOng);
-        emailOng = (TextView) findViewById(R.id.emailOng);
+        nomeContato = (TextView) findViewById(R.id.nomeContato);
+        enderecoContato = (TextView) findViewById(R.id.enderecoContato);
+        telefoneContato = (TextView) findViewById(R.id.telefoneContato);
+        emailContato = (TextView) findViewById(R.id.emailContato);
         fotoAnimal = (ImageView) findViewById(R.id.fotoAnimal);
+        alergiaAnimal = (TextView) findViewById(R.id.alergiaAnimal);
+        doencaAnimal = (TextView) findViewById(R.id.doencaAnimal);
+        descricaoAnimal = (TextView) findViewById(R.id.descricaoAnimal);
     }
 
     //Método que retorna latitude e longitude de um endereço passado como argumento
@@ -131,9 +137,9 @@ public class TelaAnimal extends AppCompatActivity implements OnMapReadyCallback{
         bancoDeDados_firebase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                LatLng ong = pegaLocalizacaoPeloEndereco(TelaAnimal.this, dataSnapshot.child("ONG").child("endereco").getValue().toString());
-                mapa_google.addMarker(new MarkerOptions().position(ong).title(dataSnapshot.child("ONG").child("nomeOng").getValue().toString()));
-                mapa_google.moveCamera(CameraUpdateFactory.newLatLngZoom(ong , 15.0f));
+                LatLng contato = pegaLocalizacaoPeloEndereco(TelaAnimal.this, dataSnapshot.child("Contato").child("enderecoContato").getValue().toString());
+                mapa_google.addMarker(new MarkerOptions().position(contato).title(dataSnapshot.child("Contato").child("nomeContato").getValue().toString()));
+                mapa_google.moveCamera(CameraUpdateFactory.newLatLngZoom(contato , 15.0f));
             }
 
             @Override

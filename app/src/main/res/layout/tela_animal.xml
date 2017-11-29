@@ -110,37 +110,65 @@
                 android:id="@+id/idadeAnimal"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/itensAnimal"
-                android:layout_alignStart="@+id/corAnimal"
+                android:layout_above="@+id/alergiaAnimal"
+                android:layout_alignStart="@+id/alergiaAnimal"
                 android:gravity="center" />
 
             <TextView
-                android:id="@+id/itensAnimal"
-                android:layout_width="match_parent"
+                android:id="@+id/idAlergia"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/idIdade"
                 android:layout_below="@+id/idIdade"
                 android:layout_marginTop="8dp"
-                android:maxLines="3"
-                android:minLines="2"
-                android:text="Castrado\nPossui pão com geléia" />
+                android:text="@string/telaAnimal_alergias"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/alergiaAnimal"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/idAlergia"
+                android:layout_alignBottom="@+id/idAlergia"
+                android:layout_alignStart="@+id/tamanhoAnimal"
+                android:layout_marginTop="8dp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/idDoenca"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/idAlergia"
+                android:layout_below="@+id/idAlergia"
+                android:layout_marginTop="8dp"
+                android:text="@string/telaAnimal_doencas"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/doencaAnimal"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/idDoenca"
+                android:layout_alignBottom="@+id/idDoenca"
+                android:layout_alignStart="@+id/tamanhoAnimal"
+                android:gravity="center" />
 
             <FrameLayout
                 android:id="@+id/frameLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/itensAnimal"
-                android:layout_marginTop="16dp"
+                android:layout_below="@+id/idDoenca"
+                android:layout_marginTop="32dp"
                 android:background="@drawable/borda2">
 
                 <TextView
                     android:id="@+id/descricaoAnimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="5dp"
                     android:maxLines="10"
                     android:minLines="3"
-                    android:text="Encontrado voando pelo universo.\n\nTinha um pão com geléia grudado no corpo, que não foi tirado devido ao amor demonstrado pelo pão.\n\nGosta de voar e ouvir música."
-                    android:textAlignment="center" />
+                    android:gravity="center" />
 
             </FrameLayout>
 
@@ -156,45 +184,44 @@
                 >
 
                 <TextView
-                    android:id="@+id/nomeOng"
+                    android:id="@+id/nomeContato"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="4dp"
                     android:drawableStart="@mipmap/nome"
                     android:gravity="center"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginStart="15dp"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/telefoneOng"
+                    android:id="@+id/telefoneContato"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="13dp"
                     android:drawableStart="@mipmap/telefone"
-                    android:layout_marginTop="13dp"
                     android:gravity="center"
-                    android:textStyle="bold"
-                    android:layout_marginStart="16dp" />
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/emailOng"
+                    android:id="@+id/emailContato"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@mipmap/email"
+                    android:layout_marginStart="15dp"
                     android:layout_marginTop="16dp"
+                    android:drawableStart="@mipmap/email"
                     android:gravity="center"
-                    android:textStyle="bold"
-                    android:layout_marginStart="15dp"/>
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/enderecoOng"
+                    android:id="@+id/enderecoContato"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@mipmap/endereco"
+                    android:layout_marginStart="19dp"
                     android:layout_marginTop="13dp"
+                    android:drawableStart="@mipmap/endereco"
                     android:gravity="center"
-                    android:textStyle="bold"
-                    android:layout_marginStart="19dp"/>
+                    android:textStyle="bold" />
 
 
             </LinearLayout>
