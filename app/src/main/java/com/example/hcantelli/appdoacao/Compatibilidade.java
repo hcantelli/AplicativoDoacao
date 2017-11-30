@@ -68,7 +68,7 @@ public class Compatibilidade extends AppCompatActivity {
                                                                 @Override
                                                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                                                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                                                                        caracteristicasAnimal.add((Double) ds.getValue());
+                                                                        caracteristicasAnimal.add(Double.parseDouble(ds.getValue().toString()));
                                                                     }
                                                                     //Cálculo do erro médio quadrático
                                                                     for (int count2 = 0; count2 < 10; count2++){

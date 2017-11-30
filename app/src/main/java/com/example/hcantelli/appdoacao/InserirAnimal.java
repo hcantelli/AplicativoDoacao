@@ -12,6 +12,7 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -64,6 +65,7 @@ public class InserirAnimal extends AppCompatActivity{
     private double agitado_valor,amigavel_valor,carente_valor,carinhoso_valor,alergia_valor, doenca_valor, genero_valor, idade_valor,
             tipo_valor, pelagem_valor;
     private static final int REQUEST_IMAGE_CAPTURE = 1;
+    private TextWatcher telefoneMascara;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     protected void onCreate(Bundle savedInstanceState){
@@ -169,6 +171,9 @@ public class InserirAnimal extends AppCompatActivity{
         amigavel = (DiscreteSeekBar) findViewById(R.id.amigavelSeekBar);
         carente = (DiscreteSeekBar) findViewById(R.id.carenteSeekBar);
         carinhoso = (DiscreteSeekBar) findViewById(R.id.carinhosoSeekBar);
+
+        telefoneMascara = Mascara.insert("(##)#####-####", telefoneContato);
+        telefoneContato.addTextChangedListener(telefoneMascara);
 
         agitado.setOnProgressChangeListener(new DiscreteSeekBar.OnProgressChangeListener() {
             @Override
@@ -382,7 +387,6 @@ public class InserirAnimal extends AppCompatActivity{
 
         return usuarioMap;
     }
-    //Verificar pq o Firebase está transformando esses valores em Long ao invés de Double
     private HashMap<String, Double> inserePersonalidade(){
         final HashMap<String, Double> usuarioMap = new HashMap<>();
 
