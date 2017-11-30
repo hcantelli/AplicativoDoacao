@@ -130,4 +130,5 @@
     <string name="carinhoso">Carinhoso</string>
     <string name="inserirAnimal">Inserir Animal</string>
     <string name="inserirSucesso">Animal inserido com sucesso!</string>
+    <string name="compatibilidade">Compatibilidade</string>
 </resources>

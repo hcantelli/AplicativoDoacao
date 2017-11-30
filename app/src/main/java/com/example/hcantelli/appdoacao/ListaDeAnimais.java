@@ -33,6 +33,7 @@ public class ListaDeAnimais extends AppCompatActivity implements AdapterView.OnI
     private ArrayList<String> vetor_animais_02 = new ArrayList<>();
     private ArrayList<String> listaDeAnimais_vetor = new ArrayList<>();
     private ArrayList<String> listaDeAnimais_vetor_fotos = new ArrayList<>();
+    private ArrayList<Double> listaDeAnimais_vetor_compatibilidade = new ArrayList<>();
 
     @Override
     public void onBackPressed() {
@@ -48,6 +49,7 @@ public class ListaDeAnimais extends AppCompatActivity implements AdapterView.OnI
         Intent intent = getIntent();
         ArrayList<Double> compatibilidadePorAnimal = (ArrayList<Double>) intent.getSerializableExtra("CompatibilidadeAnimal");
         final ArrayList<String> idAnimal = intent.getStringArrayListExtra("idAnimal");
+        final ArrayList<Double> compatibilidadePorAnimalPorcentagem = new ArrayList<>();
         final Map<Double, String> vetor_animais = new HashMap<>();
         final ArrayList<String> idAnimalOrdenado = new ArrayList<>();
 
@@ -62,9 +64,14 @@ public class ListaDeAnimais extends AppCompatActivity implements AdapterView.OnI
         for(Double s : compatibilidadePorAnimal){
             vetor_animais.get(s);
             idAnimalOrdenado.add(vetor_animais.get(s));
+            compatibilidadePorAnimalPorcentagem.add(
+                    100.0 - ((100.0 * s)/19.0)
+            );
         }
 
-        final Adaptador vetorAdaptado = new Adaptador(this, listaDeAnimais_vetor, listaDeAnimais_vetor_fotos);
+        listaDeAnimais_vetor_compatibilidade.addAll(compatibilidadePorAnimalPorcentagem);
+
+        final Adaptador vetorAdaptado = new Adaptador(this, listaDeAnimais_vetor, listaDeAnimais_vetor_fotos, listaDeAnimais_vetor_compatibilidade);
 
         bancoDeDados_firebase = FirebaseDatabase.getInstance().getReference();
         listaDeAnimais = (ListView) findViewById(R.id.listaDeAnimais);

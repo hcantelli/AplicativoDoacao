@@ -28,4 +28,22 @@
         android:textSize="20sp"
         />
 
+    <TextView
+        android:id="@+id/compatibilidadeAnimal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/nomeAnimal"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="17dp" />
+
+    <TextView
+        android:id="@+id/idCompatibilidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/compatibilidadeAnimal"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="13dp"
+        android:textStyle="italic"
+        android:text="@string/compatibilidade" />
+
 </RelativeLayout>
