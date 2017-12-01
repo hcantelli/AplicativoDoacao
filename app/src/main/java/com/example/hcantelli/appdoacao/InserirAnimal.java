@@ -125,11 +125,11 @@ public class InserirAnimal extends AppCompatActivity{
                                        @Override
                                        public void onComplete(@NonNull Task<Void> task) {
                                            if(task.isSuccessful()){
-                                               Toast.makeText(InserirAnimal.this, getText(R.string.inserirSucesso), Toast.LENGTH_LONG).show();
                                                Handler handler = new Handler();
                                                handler.postDelayed(new Runnable() {
                                                    public void run() {
                                                        progressDialog.dismiss();
+                                                       Toast.makeText(InserirAnimal.this, getText(R.string.inserirSucesso), Toast.LENGTH_LONG).show();
                                                        Intent intent = new Intent(InserirAnimal.this, TelaUsuario.class);
                                                        startActivity(intent);
                                                    }
