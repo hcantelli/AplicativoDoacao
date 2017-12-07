@@ -86,12 +86,14 @@ public class Cadastro extends AppCompatActivity{
                                                         startActivity(intent);
                                                     } else {
                                                         Toast.makeText(Cadastro.this, getText(R.string.cadastro_erro), Toast.LENGTH_LONG).show();
+                                                        progressDialog.dismiss();
                                                     }
                                                 }
                                             });
                                         } else {
                                             Log.e("ERROR", task.getException().toString());
                                             Toast.makeText(Cadastro.this, getText(R.string.cadastro_erro), Toast.LENGTH_LONG).show();
+                                            progressDialog.dismiss();
                                         }
                                     }
                                 });
@@ -99,8 +101,10 @@ public class Cadastro extends AppCompatActivity{
                                 Log.e("ERROR", task.getException().toString());
                                 if(task.getException().toString().equals(getText(R.string.erro_email))){
                                     Toast.makeText(Cadastro.this, getText(R.string.email_utilizado), Toast.LENGTH_LONG).show();
+                                    progressDialog.dismiss();
                                 } else {
                                     Toast.makeText(Cadastro.this, getText(R.string.cadastro_erro), Toast.LENGTH_LONG).show();
+                                    progressDialog.dismiss();
                                 }
                             }
                         }
